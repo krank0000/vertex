@@ -1,0 +1,459 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+TC:wght@100..900&family=Oswald:wght@200..700&display=swap");
+header {
+  transition: all 0.5s ease-in-out;
+}
+
+/*允許你傳入不同的參數來設定容器的 最大寬度、左右內邊距 以及 對齊方式（預設置中）。*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+}
+header .wrap {
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  /*響應式設計*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 1180px) {
+  header .wrap {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  header .wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+header .wrap .logoBox a {
+  width: 142px;
+}
+header .wrap .logoBox a img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+header .wrap .navBox ul {
+  display: flex;
+  gap: 2vw;
+}
+header .wrap .navBox ul li {
+  list-style: none;
+}
+header .wrap .navBox ul li a {
+  padding: 6vh 0;
+  text-decoration: none;
+  color: #f7f7f7;
+  font-size: 18px;
+  letter-spacing: 1.8px;
+}
+header .wrap .rightBox {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+header .wrap .rightBox .languageBox .defaultBox {
+  padding: 6vh 0;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  color: #f7f7f7;
+}
+header .wrap .rightBox .languageBox .defaultBox .languageCurrent {
+  text-transform: uppercase;
+  position: relative;
+  margin: 0 20px 0 10px;
+  cursor: pointer;
+  letter-spacing: 0.9px;
+}
+header .wrap .rightBox .languageBox .defaultBox .languageCurrent::after {
+  content: " |";
+  position: absolute;
+  margin-left: 10px;
+  font-weight: 200;
+}
+header .wrap .rightBox .languageBox ul.languageList {
+  display: none;
+  position: absolute;
+  background-color: #202020;
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 100px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  /*響應式設計*/
+}
+@media (max-width: 1180px) {
+  header .wrap .rightBox .languageBox ul.languageList {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  header .wrap .rightBox .languageBox ul.languageList {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+header .wrap .rightBox .languageBox ul.languageList li {
+  list-style: none;
+  padding: 10px 0;
+  text-align: center;
+}
+header .wrap .rightBox .languageBox ul.languageList li a {
+  text-decoration: none;
+  color: #f7f7f7;
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+}
+header .wrap .rightBox .menuBtnBox {
+  display: none;
+}
+header .wrap .rightBox .menuBtnBox .menuBtn {
+  width: 25px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+header .wrap .rightBox .menuBtnBox .menuBtn .line {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #f7f7f7;
+}
+@media (max-width: 1200px) {
+  header .wrap .navBox {
+    display: none;
+  }
+  header .wrap .rightBox .menuBtnBox {
+    display: block;
+  }
+}
+@media (max-width: 460px) {
+  header .wrap {
+    --h: 30px;
+    padding-top: var(--h);
+    padding-bottom: var(--h);
+  }
+  header .wrap .rightBox .languageBox {
+    display: none;
+  }
+}
+
+header.scrolled {
+  background-color: #ee7600;
+}
+
+.bannerArea .bannerSlider .bannerItem {
+  position: relative;
+}
+.bannerArea .bannerSlider .bannerItem img.bg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  min-height: 500px;
+}
+.bannerArea .bannerSlider .bannerItem .textBox {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  gap: 20px;
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  /*響應式設計*/
+  padding-top: 8vh;
+  padding-bottom: 20vh;
+}
+@media (max-width: 1180px) {
+  .bannerArea .bannerSlider .bannerItem .textBox {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .bannerArea .bannerSlider .bannerItem .textBox {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.bannerArea .bannerSlider .bannerItem .textBox h3 {
+  font-size: 24px;
+  color: #f7f7f7;
+  font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  font-weight: normal;
+}
+.bannerArea .bannerSlider .bannerItem .textBox div.more {
+  width: 275px;
+  padding: 20px 0;
+  margin-top: 1.5rem;
+  color: #ee7600;
+  cursor: pointer;
+  position: relative;
+  background: linear-gradient(135deg, transparent 10px, #fff 0);
+}
+.bannerArea .bannerSlider .bannerItem .textBox div.more p {
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  position: relative;
+}
+.bannerArea .bannerSlider .bannerItem .textBox div.more p::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid #ee7600;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-45deg) translateY(-50%);
+  top: 50%;
+  right: 40px;
+}
+@media (max-width: 1536px) {
+  .bannerArea .bannerSlider .bannerItem .textBox {
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
+  .bannerArea .bannerSlider .bannerItem .textBox img {
+    height: 110px;
+  }
+  .bannerArea .bannerSlider .bannerItem .textBox h3 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 960px) {
+  .bannerArea .bannerSlider .bannerItem .textBox img {
+    display: none;
+  }
+}
+.bannerArea .bannerSlider .bannerItem .playBox {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: end;
+  cursor: pointer;
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  /*響應式設計*/
+}
+@media (max-width: 1180px) {
+  .bannerArea .bannerSlider .bannerItem .playBox {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  .bannerArea .bannerSlider .bannerItem .playBox {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+.bannerArea .bannerSlider .bannerItem .playBox .playBtn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.bannerArea .bannerSlider .bannerItem .playBox .playBtn p {
+  color: #fff;
+  font-size: 20px;
+  font-family: "Oswald", sans-serif;
+}
+.bannerArea .bannerSlider .bannerItem .playBox .playBtn .circle {
+  display: block;
+  --cw: 40px;
+  width: var(--cw);
+  height: var(--cw);
+  border-radius: 40px;
+  border: solid #fff;
+  position: relative;
+}
+.bannerArea .bannerSlider .bannerItem .playBox .playBtn .circle::after {
+  content: "";
+  position: absolute;
+  content: "";
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 8px solid #ee7600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.bannerArea .bannerSlider .bannerItem .scrolldownBox {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.bannerArea .bannerSlider .bannerItem .scrolldownBox .arrowDown {
+  display: block;
+  --w: 10px;
+  width: var(--w);
+  height: var(--w);
+  border: solid #f7f7f7;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+footer {
+  width: 100%;
+  background-color: #ee7600;
+  color: #f7f7f7;
+}
+footer .wrap {
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+  padding-left: 50px;
+  padding-right: 50px;
+  /*響應式設計*/
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 80px 0;
+}
+@media (max-width: 1180px) {
+  footer .wrap {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  footer .wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+footer .wrap .footerLogo img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+footer .wrap .footerNav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3vw;
+}
+footer .wrap .footerNav ul li {
+  list-style: none;
+}
+footer .wrap .footerNav ul li a {
+  text-decoration: none;
+  color: #f7f7f7;
+  font-size: 18px;
+  padding: 0 5px;
+}
+footer .wrap .footerNav ul li a::after {
+  content: " |";
+  position: absolute;
+  margin-left: 1.5vw;
+}
+footer .wrap .footerNav ul li:last-child a::after {
+  content: "";
+}
+footer .wrap .footerInfo ul {
+  display: flex;
+  gap: 3vw;
+}
+footer .wrap .footerInfo ul li {
+  list-style: none;
+}
+footer .wrap .footerInfo ul li a {
+  text-decoration: none;
+  color: #f7f7f7;
+  font-size: 18px;
+  letter-spacing: 0.9px;
+}
+footer .wrap .footerInfo ul li a label {
+  font-family: "Oswald", sans-serif;
+}
+@media (max-width: 1100px) {
+  footer .wrap .footerInfo ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+}
+footer .wrap .footerSocial ul {
+  display: flex;
+  gap: 20px;
+}
+footer .wrap .footerSocial ul li {
+  list-style: none;
+}
+footer .wrap .footerSocial ul li a {
+  text-decoration: none;
+  color: #ee7600;
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #f7f7f7;
+}
+footer .wrap .footerCopyright {
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  color: #f7f7f7;
+  letter-spacing: 0.9px;
+}
+footer .wrap .footerCopyright a {
+  text-decoration: none;
+  color: #f7f7f7;
+}/*# sourceMappingURL=styles.css.map */

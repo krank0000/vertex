@@ -1,0 +1,376 @@
+//匯入共同設定
+@import "setting";
+@import "font";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+header {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  @extend %ts; //transition: all 0.5s ease-in-out;
+
+  .wrap {
+    @include wrap(1700px, 50px, 50px, center);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logoBox {
+      a {
+        width: 142px;
+        img {
+          @include imgContain();
+        }
+      }
+    }
+    .navBox {
+      ul {
+        display: flex;
+        gap: 2vw;
+        li {
+          list-style: none;
+          a {
+            padding: 6vh 0;
+            text-decoration: none;
+            color: $thirdColor;
+            font-size: $textTitleSizeMedium;
+            @include calcLetterSpacing($textTitleSizeMedium, 100);
+          }
+        }
+      }
+    }
+    .rightBox {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      .languageBox {
+        .defaultBox {
+          padding: 6vh 0;
+          display: flex;
+          align-items: center;
+          font-size: $textTitleSizeMedium;
+          font-family: $thirdFont;
+          color: $thirdColor;
+          .languageCurrent {
+            text-transform: uppercase;
+            position: relative;
+            margin: 0 20px 0 10px;
+            cursor: pointer;
+            @include calcLetterSpacing($textTitleSizeMedium, 50);
+            @include pseudoAfter(" |", absolute) {
+              margin-left: 10px;
+              font-weight: 200;
+            }
+          }
+        }
+        ul.languageList {
+          display: none;
+          position: absolute;
+          background-color: $secondColor;
+          @include wrap(100px, 0, 0, center);
+          li {
+            list-style: none;
+            padding: 10px 0;
+            text-align: center;
+            a {
+              text-decoration: none;
+              color: $thirdColor;
+              font-size: $textTitleSizeMedium;
+              font-family: $thirdFont;
+            }
+          }
+        }
+      }
+      .menuBtnBox {
+        display: none;
+        .menuBtn {
+          width: 25px;
+          height: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          cursor: pointer;
+          .line {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: $thirdColor;
+          }
+        }
+      }
+    }
+    //RWD=============================
+    @include media(1200) {
+      .navBox {
+        display: none;
+      }
+      .rightBox {
+        .menuBtnBox {
+          display: block;
+        }
+      }
+    }
+    @include media(460) {
+      --h: 30px;
+      padding-top: var(--h);
+      padding-bottom: var(--h);
+      .rightBox {
+        .languageBox {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+header.scrolled {
+  background-color: $mainColor;
+}
+
+.bannerArea {
+  .bannerSlider {
+    .bannerItem {
+      position: relative;
+      img.bg {
+        @include imgCover();
+        min-height: 500px;
+      }
+      .textBox {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        gap: 20px;
+        @include wrap(1200px, 0, 0, center);
+        padding-top: 8vh;
+        padding-bottom: 20vh;
+        h3 {
+          font-size: $h3SizeMedium;
+          color: $thirdColor;
+          font-family: $secondFont;
+          font-weight: normal;
+        }
+        div.more {
+          width: 275px;
+          padding: 20px 0;
+          margin-top: 1.5rem;
+          color: $btnBgColor;
+          cursor: pointer;
+          position: relative;
+          //矩形缺角
+          background: linear-gradient(135deg, transparent 10px, $btnColor 0);
+          p {
+            font-size: $textTitleSizeMedium;
+            font-family: $thirdFont;
+            text-transform: uppercase;
+            position: relative;
+            //箭頭
+            @include pseudoAfter("", absolute) {
+              width: 10px;
+              height: 10px;
+              border: solid $btnBgColor;
+              border-width: 0 2px 2px 0;
+              transform: rotate(-45deg) translateY(-50%);
+              top: 50%;
+              right: 40px;
+            }
+          }
+        }
+        //RWD=============================
+        @include media(1536) {
+          padding-top: 10vh;
+          padding-bottom: 10vh;
+          img {
+            height: 110px;
+          }
+          h3 {
+            font-size: $h3SizeSmall;
+          }
+        }
+        @include media(960) {
+          img {
+            display: none;
+          }
+        }
+      }
+      .playBox {
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        justify-content: end;
+        cursor: pointer;
+        @include wrap(1200px, 0, 0, center);
+        .playBtn {
+          display: flex;
+          align-items: center;
+          gap: 15px;
+          p {
+            color: $btnColor;
+            font-size: $textTitleSize;
+            font-family: $thirdFont;
+          }
+          .circle {
+            display: block;
+            --cw: 40px;
+            width: var(--cw);
+            height: var(--cw);
+            border-radius: 40px;
+            border: solid $btnColor;
+            position: relative;
+            //三角形
+            @include pseudoAfter("", absolute) {
+              content: "";
+              width: 0;
+              height: 0;
+              border-top: 4px solid transparent;
+              border-bottom: 4px solid transparent;
+              border-left: 8px solid $btnBgColor;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+      .scrolldownBox {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        cursor: pointer;
+        .arrowDown {
+          display: block;
+          --w: 10px;
+          width: var(--w);
+          height: var(--w);
+          border: solid $thirdColor;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+      //RWD=============================
+      @include media(425) {
+      }
+    }
+  }
+}
+
+main {
+}
+
+footer {
+  width: 100%;
+  background-color: $mainColor;
+  color: $linkColor;
+  .wrap {
+    @include wrap(1700px, 50px, 50px, center);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 30px;
+    padding: 80px 0;
+    .footerLogo {
+      img {
+        @include imgContain();
+      }
+    }
+    .footerNav {
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 3vw;
+        li {
+          list-style: none;
+          a {
+            text-decoration: none;
+            color: $linkColor;
+            font-size: $textTitleSizeMedium;
+            padding: 0 5px;
+            //增加分隔線
+            @include pseudoAfter(" |", absolute) {
+              margin-left: calc(3vw / 2);
+            }
+          }
+          // 移除最後一個分隔線
+          &:last-child a::after {
+            content: "";
+          }
+        }
+      }
+    }
+    .footerInfo {
+      ul {
+        display: flex;
+        gap: 3vw;
+        li {
+          list-style: none;
+          a {
+            text-decoration: none;
+            color: $linkColor;
+            font-size: $textTitleSizeMedium;
+            @include calcLetterSpacing($textTitleSizeMedium, 50);
+            label {
+              font-family: $thirdFont;
+            }
+          }
+        }
+        //RWD=============================
+        @include media(1100) {
+          flex-direction: column;
+          align-items: center;
+          gap: 20px;
+        }
+      }
+    }
+    .footerSocial {
+      ul {
+        display: flex;
+        gap: 20px;
+        li {
+          list-style: none;
+          a {
+            text-decoration: none;
+            color: $mainColor;
+            font-size: $textTitleSizeMedium;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background-color: $linkColor;
+          }
+        }
+      }
+    }
+    .footerCopyright {
+      font-size: $textTitleSizeMedium;
+      font-family: $thirdFont;
+      color: $linkColor;
+      @include calcLetterSpacing($textTitleSizeMedium, 50);
+      a {
+        text-decoration: none;
+        color: $linkColor;
+      }
+    }
+  }
+}
