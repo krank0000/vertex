@@ -132,6 +132,7 @@ header.scrolled {
 }
 
 .bannerArea {
+  position: relative;
   .bannerSlider {
     .bannerItem {
       position: relative;
@@ -202,6 +203,17 @@ header.scrolled {
             display: none;
           }
         }
+        @include media(425) {
+          h3 {
+            font-size: $h3SizeSmall;
+          }
+          div.more {
+            width: 200px;
+            p {
+              font-size: $textTitleSizeSmall;
+            }
+          }
+        }
       }
       .playBox {
         position: absolute;
@@ -244,35 +256,247 @@ header.scrolled {
             }
           }
         }
-      }
-      .scrolldownBox {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        cursor: pointer;
-        .arrowDown {
-          display: block;
-          --w: 10px;
-          width: var(--w);
-          height: var(--w);
-          border: solid $thirdColor;
-          border-width: 0 2px 2px 0;
-          transform: rotate(45deg);
+        //RWD=============================
+        @include media(430) {
+          bottom: 30px;
         }
       }
-      //RWD=============================
-      @include media(425) {
+    }
+  }
+  //滑鼠滾動按鈕
+  .scrolldownBox {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    cursor: pointer;
+    .arrowDown {
+      display: block;
+      --w: 10px;
+      width: var(--w);
+      height: var(--w);
+      border: solid $thirdColor;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+    //RWD=============================
+    @include media(430) {
+      gap: 3px;
+      img {
+        width: 20px;
+      }
+      .arrowDown {
+        --w: 8px;
       }
     }
   }
 }
 
 main {
+  section.factory {
+    // min-height: 90vh;
+    background-image: url(../img/factoryBg.png);
+    background-size: cover;
+    background-position: center;
+    .wrap {
+      @include wrap(1700px, 50px, 50px, center);
+      padding-top: 5%;
+      padding-bottom: 5%;
+      .topBox {
+        @include wrap(1200px, 0, 0, center);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+
+        h2.titleSize {
+          position: relative;
+          font-size: $h2Size;
+          color: $mainColor;
+          @include calcLetterSpacing($h2Size, 50);
+          @include pseudoBefore("＂", absolute) {
+            color: $mainColor;
+            font-size: $h2SizeSmall;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+        h2.titleSizeSmall {
+          font-size: $h2SizeSmall;
+          color: $secondColor;
+          font-family: $thirdFont;
+          @include calcLetterSpacing($h2SizeSmall, 20);
+        }
+        p {
+          padding: 10px 0;
+          color: $textColor;
+          font-size: $textTitleSizeMedium;
+          text-align: center;
+          @include calcLetterSpacing($textTitleSizeMedium, 20);
+          line-height: calc($textTitleSizeMedium * 1.5);
+        }
+      }
+      .bottomBox {
+        @include wrap(1500px, 0, 0, center);
+        padding-top: 40px;
+        .factoryInfo {
+          height: 450px;
+          display: flex;
+          justify-content: space-between;
+          align-items: start;
+
+          .factoryItem {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            font-family: $mainFont;
+            .iconBox {
+              margin-top: 20px;
+              position: relative;
+              --w: 184px;
+              width: var(--w);
+              height: var(--w);
+              background-color: $thirdColor;
+              border-radius: 50%;
+              box-shadow: 0px 0px 10px 0px $textColor;
+              z-index: 1;
+              img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+              }
+              h3.iconNumber {
+                z-index: 2;
+                position: absolute;
+                top: calc(var(--h3IconSize) / 2 * -1);
+                left: 50%;
+                transform: translateX(-50%);
+                color: $mainColor;
+                font-size: $h3Size;
+                font-family: $thirdFont;
+                @extend %ts;
+                //=====
+                --h3IconSize: 60px;
+                width: var(--h3IconSize);
+                height: var(--h3IconSize);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+              }
+              //hover效果 虛線
+              @include pseudoAfter("", absolute) {
+                @extend %ts;
+                content: "";
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 110%;
+                height: 110%;
+                border: 5px dotted $mainColor;
+                opacity: 0;
+                border-radius: 50%;
+              }
+            }
+            .itemText {
+              text-align: center;
+              width: 250px;
+              h4 {
+                font-size: $h4SizeSmall;
+                @include calcLetterSpacing($h4SizeSmall, 20);
+                span {
+                  color: $mainColor;
+                }
+              }
+              p {
+                height: 90px; //限制高度(讓每一個factoryItem的高度一致)
+                color: $textColor;
+                font-size: $textTitleSizeMedium;
+                @include calcLetterSpacing($textTitleSizeMedium, 20);
+              }
+            }
+            @include hover {
+              .iconBox {
+                h3.iconNumber {
+                  color: $thirdColor;
+                  background-color: $mainColor;
+                }
+                &::after {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+          .factoryItem:nth-child(odd) {
+            align-self: flex-end;
+          }
+        }
+        //RWD=============================
+        @include media($defaultWidth) {
+          .factoryInfo {
+            .factoryItem {
+              width: 100%;
+              .iconBox {
+                --w: 140px;
+              }
+              .itemText {
+                width: 100%;
+                h4 {
+                  font-size: $h5Size;
+                }
+                p {
+                  font-size: $h5SizeSmall;
+                }
+              }
+            }
+          }
+        }
+        //RWD===slick dots==================
+        @include media(1200) {
+          .factoryInfo {
+            flex-direction: column;
+            align-items: center;
+            height: 300px;
+            .slick-list {
+              width: 100%;
+            }
+            .slick-dots {
+              display: flex;
+              justify-content: center;
+              gap: 10px;
+              li {
+                list-style: none;
+                button {
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 50%;
+                  background-color: $thirdColor;
+                  border: 2px solid $mainColor;
+                  cursor: pointer;
+                  font-size: 0; //隱藏數字
+                }
+                &.slick-active button {
+                  background-color: $mainColor;
+                }
+              }
+            }
+          }
+        }
+      }
+      //RWD=============================
+      @include media($breakpointSmall) {
+        padding-top: 10%;
+        padding-bottom: 10%;
+      }
+    }
+  }
 }
 
 footer {

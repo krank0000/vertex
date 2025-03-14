@@ -48,6 +48,39 @@
         color: azure;
         z-index: 1;
       }
+      button::before {
+        display: none;
+      }
+      /* ======================= */
+      .container {
+        background-color: #b3ff79;
+        display: flex;
+        flex-wrap: wrap;
+        width: calc(60px * 5 + 50px * 4);
+        gap: 50px;
+        height: 250px;
+        align-items: flex-start;
+        position: relative;
+        margin: 0 auto;
+      }
+
+      .circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 2px solid blue;
+        background-color: red;
+        position: relative;
+      }
+      .circle:nth-child(odd) {
+        align-self: flex-end;
+      }
+      /* .circle:nth-child(odd) {
+        margin-top: 30px;
+      }
+      .circle:nth-child(even) {
+        margin-bottom: 30px;
+      } */
     </style>
   </head>
   <body>
@@ -71,9 +104,13 @@
           <img src="https://picsum.photos/id/600/200/200" alt="" />
         </div>
       </div>
-      <div class="sliderBtn">
-        <button class="prev"><i class="fa-solid fa-caret-left"></i></button>
-        <button class="next"><i class="fa-solid fa-caret-right"></i></button>
+      <div class="sliderBtn"></div>
+      <div class="container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
       </div>
     </main>
     <!-- js -->
@@ -93,6 +130,7 @@
         infinite: true,
         slidesToShow: 3, // 一次顯示幾張
         slidesToScroll: 3, // 一次滾動幾張
+        // vertical: true, // 垂直滾動
         appendArrows: $(".sliderBtn"),
         prevArrow:
           '<button class="prev"><i class="fa-solid fa-caret-left"></i></button>',
