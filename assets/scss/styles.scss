@@ -130,6 +130,47 @@ header {
 header.scrolled {
   background-color: $mainColor;
 }
+//learn more按鈕
+div.more {
+  width: 275px;
+  padding: 20px 0;
+  margin-top: 1.5rem;
+  color: $btnBgColor;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  //矩形缺角
+  background: linear-gradient(135deg, transparent 10px, $btnColor 0);
+  p {
+    font-size: $textTitleSizeMedium;
+    font-family: $thirdFont;
+    text-transform: uppercase;
+    position: relative;
+    //箭頭
+    @include pseudoAfter("", absolute) {
+      width: 10px;
+      height: 10px;
+      border: solid $btnBgColor;
+      border-width: 0 2px 2px 0;
+      transform: rotate(-45deg) translateY(-50%);
+      top: 50%;
+      right: 40px;
+    }
+  }
+}
+div.colorChange {
+  color: $btnColor;
+  background: linear-gradient(135deg, transparent 10px, $btnBgColor 0);
+  @include pseudoAfter("", absolute) {
+    width: 10px;
+    height: 10px;
+    border: solid $btnColor;
+    border-width: 0 2px 2px 0;
+    transform: rotate(-45deg) translateY(-50%);
+    top: 50%;
+    right: 40px;
+  }
+}
 
 .bannerArea {
   position: relative;
@@ -160,32 +201,6 @@ header.scrolled {
           color: $thirdColor;
           font-family: $secondFont;
           font-weight: normal;
-        }
-        div.more {
-          width: 275px;
-          padding: 20px 0;
-          margin-top: 1.5rem;
-          color: $btnBgColor;
-          cursor: pointer;
-          position: relative;
-          //矩形缺角
-          background: linear-gradient(135deg, transparent 10px, $btnColor 0);
-          p {
-            font-size: $textTitleSizeMedium;
-            font-family: $thirdFont;
-            text-transform: uppercase;
-            position: relative;
-            //箭頭
-            @include pseudoAfter("", absolute) {
-              width: 10px;
-              height: 10px;
-              border: solid $btnBgColor;
-              border-width: 0 2px 2px 0;
-              transform: rotate(-45deg) translateY(-50%);
-              top: 50%;
-              right: 40px;
-            }
-          }
         }
         //RWD=============================
         @include media(1536) {
@@ -296,7 +311,63 @@ header.scrolled {
   }
 }
 
+//main section 主標題設定
+section {
+  .wrap {
+    .titleBox {
+      @include wrap(1200px, 0, 0, center);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      padding-bottom: 5%;
+      h2.titleSize {
+        position: relative;
+        font-size: $h2Size;
+        color: $mainColor;
+        text-transform: uppercase;
+        font-family: $thirdFont;
+        @include calcLetterSpacing($h2Size, 50);
+        @include pseudoBefore("＂", absolute) {
+          color: $mainColor;
+          font-size: $h2SizeSmall;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+      h2.titleSizeSmall {
+        font-size: $h2SizeSmall;
+        color: $secondColor;
+        font-family: $thirdFont;
+        @include calcLetterSpacing($h2SizeSmall, 20);
+      }
+      p {
+        padding: 10px 0;
+        color: $textColor;
+        font-size: $textTitleSizeMedium;
+        text-align: center;
+        @include calcLetterSpacing($textTitleSizeMedium, 20);
+        line-height: calc($textTitleSizeMedium * 1.5);
+      }
+      //RWD=============================
+      @include media($breakpointSmall) {
+        h2.titleSize {
+          font-size: $h3Size;
+        }
+        h2.titleSizeSmall {
+          font-size: $h3SizeSmall;
+        }
+        p {
+          font-size: $textTitleSizeSmall;
+        }
+      }
+    }
+  }
+}
+
 main {
+  // MIT專業橡膠球製造工廠
   section.factory {
     // min-height: 90vh;
     background-image: url(../img/factoryBg.png);
@@ -306,44 +377,8 @@ main {
       @include wrap(1700px, 50px, 50px, center);
       padding-top: 5%;
       padding-bottom: 5%;
-      .topBox {
-        @include wrap(1200px, 0, 0, center);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-
-        h2.titleSize {
-          position: relative;
-          font-size: $h2Size;
-          color: $mainColor;
-          @include calcLetterSpacing($h2Size, 50);
-          @include pseudoBefore("＂", absolute) {
-            color: $mainColor;
-            font-size: $h2SizeSmall;
-            top: -20px;
-            left: 50%;
-            transform: translateX(-50%);
-          }
-        }
-        h2.titleSizeSmall {
-          font-size: $h2SizeSmall;
-          color: $secondColor;
-          font-family: $thirdFont;
-          @include calcLetterSpacing($h2SizeSmall, 20);
-        }
-        p {
-          padding: 10px 0;
-          color: $textColor;
-          font-size: $textTitleSizeMedium;
-          text-align: center;
-          @include calcLetterSpacing($textTitleSizeMedium, 20);
-          line-height: calc($textTitleSizeMedium * 1.5);
-        }
-      }
       .bottomBox {
         @include wrap(1500px, 0, 0, center);
-        padding-top: 40px;
         .factoryInfo {
           height: 450px;
           display: flex;
@@ -495,6 +530,134 @@ main {
         padding-top: 10%;
         padding-bottom: 10%;
       }
+    }
+  }
+  //產品系列
+  section.product {
+    background-image: url(../img/productBg.png);
+    background-size: cover;
+    background-position: center;
+    .wrap {
+      @include wrap(1700px, 50px, 50px, center);
+      padding-top: 5%;
+      padding-bottom: 5%;
+    }
+  }
+  //服務項目
+  section.service {
+    background-image: url(../img/serviceBg.png);
+    background-size: cover;
+    background-position: center;
+    .wrap {
+      @include wrap(1700px, 50px, 50px, center);
+      padding-top: 5%;
+      padding-bottom: 5%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .bottomBox {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-bottom: 5%;
+        .serviceItem {
+          padding: 20px 0;
+          width: 460px;
+          figure {
+            width: 432px;
+            height: 260px;
+            img {
+              @include imgCover();
+            }
+          }
+          article {
+            display: flex;
+            align-items: center;
+            width: inherit; //繼承父元素寬度
+            position: relative;
+            //矩形
+            @include pseudoAfter("", absolute) {
+              content: "";
+              left: 20px;
+              width: 90%;
+              height: 200px;
+              background-color: $thirdColor;
+              transform: skew(-10deg);
+              opacity: 0.9;
+              z-index: 1;
+              @extend %ts;
+            }
+            h2.ItemNb {
+              color: $mainColor;
+              font-family: $thirdFont;
+              font-size: 100px;
+              font-weight: normal;
+              z-index: 2;
+            }
+            .textBox {
+              font-family: $mainFont;
+              z-index: 2;
+              padding: 0 20px;
+              width: 70%;
+              h4 {
+                font-size: $h4SizeSmall;
+                @include calcLetterSpacing($h4SizeSmall, 20);
+              }
+              p {
+                color: $textColor;
+                font-size: $textTitleSizeMedium;
+                @include calcLetterSpacing($textTitleSizeMedium, 20);
+              }
+            }
+          }
+          //hover效果
+          @include hover {
+            article {
+              @include pseudoAfter("", absolute) {
+                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+              }
+            }
+          }
+        }
+        //RWD=============================
+        @include media($breakpointSmall) {
+          flex-direction: column;
+          .serviceItem {
+            width: 320px;
+            figure {
+              width: 320px;
+              height: calc(320px / 1.65);
+            }
+            article {
+              @include pseudoAfter("", absolute) {
+                height: 170px;
+              }
+              h2.ItemNb {
+                font-size: 80px;
+              }
+              .textBox {
+                width: 80%;
+                h4 {
+                  font-size: $h5Size;
+                }
+                p {
+                  font-size: $dataTextSizeSmall;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  //球類百科
+  section.ballEncyclopedia {
+    background-color: $thirdColor;
+    .wrap {
+      @include wrap(1700px, 50px, 50px, center);
+      padding-top: 5%;
+      padding-bottom: 5%;
     }
   }
 }
