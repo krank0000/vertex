@@ -53,13 +53,13 @@ header .wrap .logoBox a img {
 }
 header .wrap .navBox ul {
   display: flex;
-  gap: 2vw;
 }
 header .wrap .navBox ul li {
+  width: 100%;
   list-style: none;
 }
 header .wrap .navBox ul li a {
-  padding: 6vh 0;
+  padding: 5vh 2vh;
   text-decoration: none;
   color: #f7f7f7;
   font-size: 18px;
@@ -71,7 +71,7 @@ header .wrap .rightBox {
   gap: 20px;
 }
 header .wrap .rightBox .languageBox .defaultBox {
-  padding: 6vh 0;
+  padding: 5vh 0;
   display: flex;
   align-items: center;
   font-size: 18px;
@@ -144,7 +144,7 @@ header .wrap .rightBox .menuBtnBox .menuBtn .line {
   height: 2px;
   background-color: #f7f7f7;
 }
-@media (max-width: 1200px) {
+@media (max-width: 1275px) {
   header .wrap .navBox {
     display: none;
   }
@@ -165,50 +165,6 @@ header .wrap .rightBox .menuBtnBox .menuBtn .line {
 
 header.scrolled {
   background-color: #ee7600;
-}
-
-div.more {
-  width: 275px;
-  padding: 20px 0;
-  margin-top: 1.5rem;
-  color: #ee7600;
-  cursor: pointer;
-  position: relative;
-  text-align: center;
-  background: linear-gradient(135deg, transparent 10px, #fff 0);
-}
-div.more p {
-  font-size: 18px;
-  font-family: "Oswald", sans-serif;
-  text-transform: uppercase;
-  position: relative;
-}
-div.more p::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: solid #ee7600;
-  border-width: 0 2px 2px 0;
-  transform: rotate(-45deg) translateY(-50%);
-  top: 50%;
-  right: 40px;
-}
-
-div.colorChange {
-  color: #fff;
-  background: linear-gradient(135deg, transparent 10px, #ee7600 0);
-}
-div.colorChange::after {
-  content: "";
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(-45deg) translateY(-50%);
-  top: 50%;
-  right: 40px;
 }
 
 .bannerArea {
@@ -265,6 +221,47 @@ div.colorChange::after {
   font-family: "Noto Sans TC", "Microsoft JhengHei", sans-serif;
   font-weight: normal;
 }
+.bannerArea .bannerSlider .bannerItem .textBox div.more {
+  width: 275px;
+  padding: 20px 0;
+  margin-top: 1.5rem;
+  color: #ee7600;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  background: linear-gradient(135deg, transparent 10px, #fff 0);
+}
+.bannerArea .bannerSlider .bannerItem .textBox div.more p {
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  position: relative;
+}
+.bannerArea .bannerSlider .bannerItem .textBox div.more p::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid #ee7600;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-45deg) translateY(-50%);
+  top: 50%;
+  right: 40px;
+}
+@media (max-width: 430px) {
+  .bannerArea .bannerSlider .bannerItem .textBox div.more {
+    width: 180px;
+    padding: 12px 0;
+  }
+  .bannerArea .bannerSlider .bannerItem .textBox div.more p {
+    font-size: 16px;
+  }
+  .bannerArea .bannerSlider .bannerItem .textBox div.more p::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+  }
+}
 @media (max-width: 1536px) {
   .bannerArea .bannerSlider .bannerItem .textBox {
     padding-top: 10vh;
@@ -286,18 +283,6 @@ div.colorChange::after {
 @media (max-width: 430px) {
   .bannerArea .bannerSlider .bannerItem .textBox h3 {
     font-size: 15px;
-  }
-  .bannerArea .bannerSlider .bannerItem .textBox div.more {
-    width: 180px;
-    padding: 12px 0;
-  }
-  .bannerArea .bannerSlider .bannerItem .textBox div.more p {
-    font-size: 16px;
-  }
-  .bannerArea .bannerSlider .bannerItem .textBox div.more p::after {
-    content: "";
-    position: absolute;
-    right: 20px;
   }
 }
 .bannerArea .bannerSlider .bannerItem .playBox {
@@ -399,82 +384,6 @@ div.colorChange::after {
   }
 }
 
-section .wrap .titleBox {
-  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
-  /*主要樣式設定*/
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 0;
-  padding-right: 0;
-  /*響應式設計*/
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 5%;
-}
-@media (max-width: 1180px) {
-  section .wrap .titleBox {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-@media (max-width: 768px) {
-  section .wrap .titleBox {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-}
-section .wrap .titleBox h2.titleSize {
-  position: relative;
-  font-size: 36px;
-  color: #ee7600;
-  text-transform: uppercase;
-  font-family: "Oswald", sans-serif;
-  letter-spacing: 1.8px;
-}
-section .wrap .titleBox h2.titleSize::before {
-  content: "＂";
-  position: absolute;
-  color: #ee7600;
-  font-size: 30px;
-  top: -20px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-section .wrap .titleBox h2.titleSizeSmall {
-  font-size: 30px;
-  color: #202020;
-  font-family: "Oswald", sans-serif;
-  letter-spacing: 0.6px;
-}
-section .wrap .titleBox p {
-  padding: 10px 0;
-  color: #4d4d4d;
-  font-size: 18px;
-  text-align: center;
-  letter-spacing: 0.36px;
-  line-height: 27px;
-}
-@media (max-width: 768px) {
-  section .wrap .titleBox h2.titleSize {
-    font-size: 28px;
-  }
-  section .wrap .titleBox h2.titleSizeSmall {
-    font-size: 22px;
-  }
-  section .wrap .titleBox p {
-    font-size: 16px;
-  }
-}
-
-section .wrap {
-  --sectionPaddingTB: clamp(50px, 5%, 10%);
-  padding-top: var(--sectionPaddingTB);
-  padding-bottom: var(--sectionPaddingTB);
-}
-
 main section.factory {
   background-image: url(../img/factoryBg.png);
   background-size: cover;
@@ -489,6 +398,9 @@ main section.factory .wrap {
   padding-left: 50px;
   padding-right: 50px;
   /*響應式設計*/
+  --sectionPaddingTB: clamp(50px, 5%, 10%);
+  padding-top: var(--sectionPaddingTB);
+  padding-bottom: var(--sectionPaddingTB);
 }
 @media (max-width: 1180px) {
   main section.factory .wrap {
@@ -500,6 +412,75 @@ main section.factory .wrap {
   main section.factory .wrap {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+main section.factory .wrap .topBox {
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  /*響應式設計*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: clamp(20px, 5%, 40px);
+}
+@media (max-width: 1180px) {
+  main section.factory .wrap .topBox {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  main section.factory .wrap .topBox {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+main section.factory .wrap .topBox h2.titleSize {
+  position: relative;
+  font-size: 36px;
+  color: #ee7600;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1.8px;
+}
+main section.factory .wrap .topBox h2.titleSize::before {
+  content: "＂";
+  position: absolute;
+  color: #ee7600;
+  font-size: 30px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+main section.factory .wrap .topBox h2.titleSizeSmall {
+  font-size: 30px;
+  color: #202020;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.6px;
+}
+main section.factory .wrap .topBox p {
+  padding: 10px 0;
+  color: #4d4d4d;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.36px;
+  line-height: 27px;
+}
+@media (max-width: 768px) {
+  main section.factory .wrap .topBox h2.titleSize {
+    font-size: 28px;
+  }
+  main section.factory .wrap .topBox h2.titleSizeSmall {
+    font-size: 22px;
+  }
+  main section.factory .wrap .topBox p {
+    font-size: 16px;
   }
 }
 main section.factory .wrap .bottomBox {
@@ -633,6 +614,9 @@ main section.factory .wrap .bottomBox .slick-list .slick-track {
   height: inherit;
   position: relative;
 }
+main section.factory .wrap .bottomBox .slick-list .slick-track .slick-slide {
+  margin-top: 20px;
+}
 main section.factory .wrap .bottomBox .slick-list .slick-track .slick-slide:nth-child(odd) {
   height: inherit;
   display: flex;
@@ -716,6 +700,9 @@ main section.service .wrap {
   padding-left: 50px;
   padding-right: 50px;
   /*響應式設計*/
+  --sectionPaddingTB: clamp(50px, 5%, 10%);
+  padding-top: var(--sectionPaddingTB);
+  padding-bottom: var(--sectionPaddingTB);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -731,6 +718,75 @@ main section.service .wrap {
   main section.service .wrap {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+main section.service .wrap .topBox {
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  /*響應式設計*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: clamp(20px, 5%, 40px);
+}
+@media (max-width: 1180px) {
+  main section.service .wrap .topBox {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  main section.service .wrap .topBox {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+main section.service .wrap .topBox h2.titleSize {
+  position: relative;
+  font-size: 36px;
+  color: #ee7600;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1.8px;
+}
+main section.service .wrap .topBox h2.titleSize::before {
+  content: "＂";
+  position: absolute;
+  color: #ee7600;
+  font-size: 30px;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+main section.service .wrap .topBox h2.titleSizeSmall {
+  font-size: 30px;
+  color: #202020;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.6px;
+}
+main section.service .wrap .topBox p {
+  padding: 10px 0;
+  color: #4d4d4d;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.36px;
+  line-height: 27px;
+}
+@media (max-width: 768px) {
+  main section.service .wrap .topBox h2.titleSize {
+    font-size: 28px;
+  }
+  main section.service .wrap .topBox h2.titleSizeSmall {
+    font-size: 22px;
+  }
+  main section.service .wrap .topBox p {
+    font-size: 16px;
   }
 }
 main section.service .wrap .bottomBox {
@@ -829,6 +885,47 @@ main section.service .wrap .bottomBox .serviceItem article .textBox p {
     font-size: 14px;
   }
 }
+main section.service .wrap div.colorChange {
+  width: 275px;
+  padding: 20px 0;
+  margin-top: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  background: linear-gradient(135deg, transparent 10px, #ee7600 0);
+}
+main section.service .wrap div.colorChange p {
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  position: relative;
+}
+main section.service .wrap div.colorChange p::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-45deg) translateY(-50%);
+  top: 50%;
+  right: 40px;
+}
+@media (max-width: 430px) {
+  main section.service .wrap div.colorChange {
+    width: 180px;
+    padding: 12px 0;
+  }
+  main section.service .wrap div.colorChange p {
+    font-size: 16px;
+  }
+  main section.service .wrap div.colorChange p::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+  }
+}
 main section.ballEncyclopedia {
   background-color: #f7f7f7;
 }
@@ -836,13 +933,14 @@ main section.ballEncyclopedia .wrap {
   /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
   /*主要樣式設定*/
   width: 100%;
-  max-width: 1700px;
+  max-width: 1500px;
   margin: 0 auto;
   padding-left: 50px;
   padding-right: 50px;
   /*響應式設計*/
-  padding-top: 5%;
-  padding-bottom: 5%;
+  --sectionPaddingTB: clamp(50px, 5%, 10%);
+  padding-top: var(--sectionPaddingTB);
+  padding-bottom: var(--sectionPaddingTB);
 }
 @media (max-width: 1180px) {
   main section.ballEncyclopedia .wrap {
@@ -854,6 +952,75 @@ main section.ballEncyclopedia .wrap {
   main section.ballEncyclopedia .wrap {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+main section.ballEncyclopedia .wrap .topBox {
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  /*響應式設計*/
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-bottom: clamp(20px, 5%, 40px);
+  margin: 0;
+}
+@media (max-width: 1180px) {
+  main section.ballEncyclopedia .wrap .topBox {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  main section.ballEncyclopedia .wrap .topBox {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+main section.ballEncyclopedia .wrap .topBox h2.titleSize {
+  position: relative;
+  font-size: 36px;
+  color: #ee7600;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1.8px;
+}
+main section.ballEncyclopedia .wrap .topBox h2.titleSize::before {
+  content: "＂";
+  position: absolute;
+  color: #ee7600;
+  font-size: 30px;
+  top: -20px;
+  left: 0;
+}
+main section.ballEncyclopedia .wrap .topBox h2.titleSizeSmall {
+  font-size: 30px;
+  color: #202020;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.6px;
+}
+main section.ballEncyclopedia .wrap .topBox p {
+  padding: 10px 0;
+  color: #4d4d4d;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.36px;
+  line-height: 27px;
+}
+@media (max-width: 768px) {
+  main section.ballEncyclopedia .wrap .topBox h2.titleSize {
+    font-size: 28px;
+  }
+  main section.ballEncyclopedia .wrap .topBox h2.titleSizeSmall {
+    font-size: 22px;
+  }
+  main section.ballEncyclopedia .wrap .topBox p {
+    font-size: 16px;
   }
 }
 

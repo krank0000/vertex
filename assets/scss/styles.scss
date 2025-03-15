@@ -7,6 +7,121 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+// 自訂義mixin================================================
+//section 主標題設定--------------------------
+@mixin titleBox($align: center) {
+  @include wrap(1200px, 0, 0, center);
+  display: flex;
+  flex-direction: column;
+  align-items: $align;
+  gap: 0.5rem;
+  padding-bottom: clamp(20px, 5%, 40px);
+
+  h2.titleSize {
+    position: relative;
+    font-size: $h2Size;
+    color: $mainColor;
+    text-transform: uppercase;
+    font-family: $thirdFont;
+    @include calcLetterSpacing($h2Size, 50);
+
+    @include pseudoBefore("＂", absolute) {
+      color: $mainColor;
+      font-size: $h2SizeSmall;
+      top: -20px;
+      @if $align == center {
+        left: 50%;
+        transform: translateX(-50%);
+      } @else if $align == flex-start {
+        left: 0;
+      }
+    }
+  }
+
+  h2.titleSizeSmall {
+    font-size: $h2SizeSmall;
+    color: $secondColor;
+    font-family: $thirdFont;
+    @include calcLetterSpacing($h2SizeSmall, 20);
+  }
+
+  p {
+    padding: 10px 0;
+    color: $textColor;
+    font-size: $textTitleSizeMedium;
+    text-align: center;
+    @include calcLetterSpacing($textTitleSizeMedium, 20);
+    line-height: calc($textTitleSizeMedium * 1.5);
+  }
+
+  // RWD
+  @include media($breakpointSmall) {
+    h2.titleSize {
+      font-size: $h3Size;
+    }
+    h2.titleSizeSmall {
+      font-size: $h3SizeSmall;
+    }
+    p {
+      font-size: $textTitleSizeSmall;
+    }
+  }
+}
+//learn more按鈕------------------------------
+@mixin moreButton(
+  $bgColor: $btnColor,
+  $textColor: $btnBgColor,
+  $arrowColor: $btnBgColor
+) {
+  width: 275px;
+  padding: 20px 0;
+  margin-top: 1.5rem;
+  color: $textColor;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  background: linear-gradient(135deg, transparent 10px, $bgColor 0);
+
+  p {
+    font-size: $textTitleSizeMedium;
+    font-family: $thirdFont;
+    text-transform: uppercase;
+    position: relative;
+
+    // 箭頭樣式
+    @include pseudoAfter("", absolute) {
+      width: 10px;
+      height: 10px;
+      border: solid $arrowColor;
+      border-width: 0 2px 2px 0;
+      transform: rotate(-45deg) translateY(-50%);
+      top: 50%;
+      right: 40px;
+    }
+  }
+
+  // RWD：螢幕小於 430px 時的樣式
+  @include media(430px) {
+    width: 180px;
+    padding: 12px 0;
+
+    p {
+      font-size: $textTitleSizeSmall;
+
+      @include pseudoAfter("", absolute) {
+        right: 20px;
+      }
+    }
+  }
+}
+//section .wrap PaddingTopBottom--------------------------
+@mixin sectionPadding {
+  --sectionPaddingTB: clamp(50px, 5%, 10%);
+  padding-top: var(--sectionPaddingTB);
+  padding-bottom: var(--sectionPaddingTB);
+}
+
 header {
   position: fixed;
   top: 0;
@@ -30,11 +145,11 @@ header {
     .navBox {
       ul {
         display: flex;
-        gap: 2vw;
         li {
+          width: 100%;
           list-style: none;
           a {
-            padding: 6vh 0;
+            padding: 5vh 2vh;
             text-decoration: none;
             color: $thirdColor;
             font-size: $textTitleSizeMedium;
@@ -49,7 +164,7 @@ header {
       gap: 20px;
       .languageBox {
         .defaultBox {
-          padding: 6vh 0;
+          padding: 5vh 0;
           display: flex;
           align-items: center;
           font-size: $textTitleSizeMedium;
@@ -104,7 +219,7 @@ header {
       }
     }
     //RWD=============================
-    @include media(1200) {
+    @include media(1275) {
       .navBox {
         display: none;
       }
@@ -129,47 +244,6 @@ header {
 
 header.scrolled {
   background-color: $mainColor;
-}
-//learn more按鈕
-div.more {
-  width: 275px;
-  padding: 20px 0;
-  margin-top: 1.5rem;
-  color: $btnBgColor;
-  cursor: pointer;
-  position: relative;
-  text-align: center;
-  //矩形缺角
-  background: linear-gradient(135deg, transparent 10px, $btnColor 0);
-  p {
-    font-size: $textTitleSizeMedium;
-    font-family: $thirdFont;
-    text-transform: uppercase;
-    position: relative;
-    //箭頭
-    @include pseudoAfter("", absolute) {
-      width: 10px;
-      height: 10px;
-      border: solid $btnBgColor;
-      border-width: 0 2px 2px 0;
-      transform: rotate(-45deg) translateY(-50%);
-      top: 50%;
-      right: 40px;
-    }
-  }
-}
-div.colorChange {
-  color: $btnColor;
-  background: linear-gradient(135deg, transparent 10px, $btnBgColor 0);
-  @include pseudoAfter("", absolute) {
-    width: 10px;
-    height: 10px;
-    border: solid $btnColor;
-    border-width: 0 2px 2px 0;
-    transform: rotate(-45deg) translateY(-50%);
-    top: 50%;
-    right: 40px;
-  }
 }
 
 .bannerArea {
@@ -202,6 +276,9 @@ div.colorChange {
           font-family: $secondFont;
           font-weight: normal;
         }
+        div.more {
+          @include moreButton($btnColor, $btnBgColor, $btnBgColor);
+        }
         //RWD=============================
         @include media(1536) {
           padding-top: 10vh;
@@ -223,17 +300,6 @@ div.colorChange {
         @include media(430) {
           h3 {
             font-size: $h5SizeMedium;
-          }
-          div.more {
-            width: 180px;
-            padding: 12px 0;
-            p {
-              font-size: $textTitleSizeSmall;
-              //箭頭
-              @include pseudoAfter("", absolute) {
-                right: 20px;
-              }
-            }
           }
         }
       }
@@ -318,67 +384,6 @@ div.colorChange {
   }
 }
 
-//main section 主標題設定
-section {
-  .wrap {
-    .titleBox {
-      @include wrap(1200px, 0, 0, center);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding-bottom: 5%;
-      h2.titleSize {
-        position: relative;
-        font-size: $h2Size;
-        color: $mainColor;
-        text-transform: uppercase;
-        font-family: $thirdFont;
-        @include calcLetterSpacing($h2Size, 50);
-        @include pseudoBefore("＂", absolute) {
-          color: $mainColor;
-          font-size: $h2SizeSmall;
-          top: -20px;
-          left: 50%;
-          transform: translateX(-50%);
-        }
-      }
-      h2.titleSizeSmall {
-        font-size: $h2SizeSmall;
-        color: $secondColor;
-        font-family: $thirdFont;
-        @include calcLetterSpacing($h2SizeSmall, 20);
-      }
-      p {
-        padding: 10px 0;
-        color: $textColor;
-        font-size: $textTitleSizeMedium;
-        text-align: center;
-        @include calcLetterSpacing($textTitleSizeMedium, 20);
-        line-height: calc($textTitleSizeMedium * 1.5);
-      }
-      //RWD=============================
-      @include media($breakpointSmall) {
-        h2.titleSize {
-          font-size: $h3Size;
-        }
-        h2.titleSizeSmall {
-          font-size: $h3SizeSmall;
-        }
-        p {
-          font-size: $textTitleSizeSmall;
-        }
-      }
-    }
-  }
-}
-//section .wrap
-section .wrap {
-  --sectionPaddingTB: clamp(50px, 5%, 10%);
-  padding-top: var(--sectionPaddingTB);
-  padding-bottom: var(--sectionPaddingTB);
-}
-
 main {
   // MIT專業橡膠球製造工廠
   section.factory {
@@ -388,6 +393,10 @@ main {
     background-position: center;
     .wrap {
       @include wrap(1700px, 50px, 50px, center);
+      @include sectionPadding;
+      .topBox {
+        @include titleBox(center);
+      }
       .bottomBox {
         @include wrap(1500px, 0, 0, center);
         .factoryInfo {
@@ -509,6 +518,9 @@ main {
           .slick-track {
             height: inherit;
             position: relative;
+            .slick-slide {
+              margin-top: 20px;
+            }
             .slick-slide:nth-child(odd) {
               height: inherit;
               display: flex;
@@ -572,10 +584,14 @@ main {
     background-position: center;
     .wrap {
       @include wrap(1700px, 50px, 50px, center);
+      @include sectionPadding;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      .topBox {
+        @include titleBox(center);
+      }
       .bottomBox {
         display: flex;
         justify-content: center;
@@ -669,15 +685,21 @@ main {
           }
         }
       }
+      div.colorChange {
+        @include moreButton($btnBgColor, $btnColor, $btnColor);
+      }
     }
   }
   //球類百科
   section.ballEncyclopedia {
     background-color: $thirdColor;
     .wrap {
-      @include wrap(1700px, 50px, 50px, center);
-      padding-top: 5%;
-      padding-bottom: 5%;
+      @include wrap(1500px, 50px, 50px, center);
+      @include sectionPadding;
+      .topBox {
+        @include titleBox(flex-start);
+        margin: 0;
+      }
     }
   }
 }
