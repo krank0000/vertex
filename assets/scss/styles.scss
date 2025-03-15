@@ -704,6 +704,7 @@ main {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
       .leftBox {
         height: 450px;
         display: flex;
@@ -760,15 +761,16 @@ main {
         }
       }
       .rightBox {
+        width: 850px;
         .newSlider {
           .slick-list {
             .slick-track {
-              width: 850px; //幻燈片寬度
               .newItem {
                 margin-bottom: 20px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                gap: clamp(20px, 5%, 40px);
                 background-color: $thirdColor;
                 padding: 40px;
                 position: relative;
@@ -827,7 +829,7 @@ main {
                   }
                   .newInfo {
                     font-family: $mainFont;
-                    width: 670px;
+                    width: 100%;
                     h4 {
                       color: $secondColor;
                       font-size: $h4SizeSmall;
@@ -873,9 +875,17 @@ main {
                   }
                 }
               }
-              //RWD==
-              @include media(1320) {
-                width: 650px;
+            }
+          }
+        }
+      }
+      //RWD=============================
+      @include media(1300) {
+        .rightBox {
+          width: 700px;
+          .newSlider {
+            .slick-list {
+              .slick-track {
                 .newItem {
                   .newContent {
                     .newTitle {
@@ -892,7 +902,6 @@ main {
                       }
                     }
                     .newInfo {
-                      width: 450px;
                       h4 {
                         font-size: $h4Size;
                       }
@@ -901,10 +910,52 @@ main {
                       }
                     }
                   }
-                  .arrowBox {
-                    gap: 3px;
-                    .arrowR {
-                      --arrowRW: 10px;
+                }
+              }
+            }
+          }
+        }
+      }
+      @include media(1150) {
+        justify-content: center;
+        .leftBox {
+          justify-content: center;
+          .topBox {
+            @include titleBox(center);
+          }
+          .bottomBox {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+        }
+        .rightBox {
+          width: 700px;
+          .newSlider {
+            .slick-list {
+              .slick-track {
+                .newItem {
+                  .newContent {
+                    .newTitle {
+                      .newDateBox {
+                        h2 {
+                          font-size: $h3Size;
+                        }
+                        h5 {
+                          font-size: $h5SizeSmall;
+                        }
+                      }
+                      i.newTag {
+                        font-size: $dataTextSizeSmall;
+                      }
+                    }
+                    .newInfo {
+                      h4 {
+                        font-size: $h4Size;
+                      }
+                      p {
+                        font-size: $textTitleSizeSmall;
+                      }
                     }
                   }
                 }
@@ -913,31 +964,31 @@ main {
           }
         }
       }
-      //RWD=============================
-      @include media(1100) {
-        flex-direction: column;
+      @include media(710) {
         gap: 20px;
-        .leftBox {
-          height: 350px;
-          width: 650px;
-        }
-      }
-      @include media(700) {
-        .leftBox {
-          width: 100%;
-        }
         .rightBox {
+          width: 100%;
           .newSlider {
             .slick-list {
               .slick-track {
-                width: 600px;
                 .newItem {
-                  justify-content: center;
                   .newContent {
+                    .newTitle {
+                      .newDateBox {
+                        h2 {
+                          font-size: $h3SizeSmall;
+                        }
+                        h5 {
+                          font-size: $h5SizeSmall;
+                        }
+                      }
+                      i.newTag {
+                        font-size: $dataTextSizeSmall;
+                      }
+                    }
                     .newInfo {
-                      width: 450px;
                       h4 {
-                        font-size: $h4Size;
+                        font-size: $h4SizeSmall;
                       }
                       p {
                         font-size: $textTitleSizeSmall;
