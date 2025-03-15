@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Cactus+Classical+Serif&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+TC:wght@100..900&family=Oswald:wght@200..700&display=swap");
-main section.service .wrap .bottomBox .serviceItem article::after, main section.factory .wrap .bottomBox .factoryInfo .factoryItem .iconBox::after, main section.factory .wrap .bottomBox .factoryInfo .factoryItem .iconBox h3.iconNumber, header {
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem, main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo h4, main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem::after, main section.service .wrap .bottomBox .serviceItem article::after, main section.factory .wrap .bottomBox .factoryInfo .factoryItem .iconBox::after, main section.factory .wrap .bottomBox .factoryInfo .factoryItem .iconBox h3.iconNumber, header {
   transition: all 0.5s ease-in-out;
 }
 
@@ -527,7 +527,7 @@ main section.factory .wrap .bottomBox .factoryInfo .factoryItem .iconBox {
   height: var(--w);
   background-color: #f7f7f7;
   border-radius: 50%;
-  box-shadow: 0px 0px 10px 0px #4d4d4d;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 main section.factory .wrap .bottomBox .factoryInfo .factoryItem .iconBox img {
@@ -853,7 +853,7 @@ main section.service .wrap .bottomBox .serviceItem article .textBox p {
   main section.service .wrap .bottomBox .serviceItem:hover article::after {
     content: "";
     position: absolute;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   }
 }
 @media (max-width: 768px) {
@@ -941,6 +941,9 @@ main section.ballEncyclopedia .wrap {
   --sectionPaddingTB: clamp(50px, 5%, 10%);
   padding-top: var(--sectionPaddingTB);
   padding-bottom: var(--sectionPaddingTB);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 @media (max-width: 1180px) {
   main section.ballEncyclopedia .wrap {
@@ -954,7 +957,13 @@ main section.ballEncyclopedia .wrap {
     padding-right: 20px;
   }
 }
-main section.ballEncyclopedia .wrap .topBox {
+main section.ballEncyclopedia .wrap .leftBox {
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+main section.ballEncyclopedia .wrap .leftBox .topBox {
   /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
   /*主要樣式設定*/
   width: 100%;
@@ -971,18 +980,18 @@ main section.ballEncyclopedia .wrap .topBox {
   margin: 0;
 }
 @media (max-width: 1180px) {
-  main section.ballEncyclopedia .wrap .topBox {
+  main section.ballEncyclopedia .wrap .leftBox .topBox {
     padding-left: 30px;
     padding-right: 30px;
   }
 }
 @media (max-width: 768px) {
-  main section.ballEncyclopedia .wrap .topBox {
+  main section.ballEncyclopedia .wrap .leftBox .topBox {
     padding-left: 20px;
     padding-right: 20px;
   }
 }
-main section.ballEncyclopedia .wrap .topBox h2.titleSize {
+main section.ballEncyclopedia .wrap .leftBox .topBox h2.titleSize {
   position: relative;
   font-size: 36px;
   color: #ee7600;
@@ -990,7 +999,7 @@ main section.ballEncyclopedia .wrap .topBox h2.titleSize {
   font-family: "Oswald", sans-serif;
   letter-spacing: 1.8px;
 }
-main section.ballEncyclopedia .wrap .topBox h2.titleSize::before {
+main section.ballEncyclopedia .wrap .leftBox .topBox h2.titleSize::before {
   content: "＂";
   position: absolute;
   color: #ee7600;
@@ -998,13 +1007,13 @@ main section.ballEncyclopedia .wrap .topBox h2.titleSize::before {
   top: -20px;
   left: 0;
 }
-main section.ballEncyclopedia .wrap .topBox h2.titleSizeSmall {
+main section.ballEncyclopedia .wrap .leftBox .topBox h2.titleSizeSmall {
   font-size: 30px;
   color: #202020;
   font-family: "Oswald", sans-serif;
   letter-spacing: 0.6px;
 }
-main section.ballEncyclopedia .wrap .topBox p {
+main section.ballEncyclopedia .wrap .leftBox .topBox p {
   padding: 10px 0;
   color: #4d4d4d;
   font-size: 18px;
@@ -1013,14 +1022,267 @@ main section.ballEncyclopedia .wrap .topBox p {
   line-height: 27px;
 }
 @media (max-width: 768px) {
-  main section.ballEncyclopedia .wrap .topBox h2.titleSize {
+  main section.ballEncyclopedia .wrap .leftBox .topBox h2.titleSize {
     font-size: 28px;
   }
-  main section.ballEncyclopedia .wrap .topBox h2.titleSizeSmall {
+  main section.ballEncyclopedia .wrap .leftBox .topBox h2.titleSizeSmall {
     font-size: 22px;
   }
-  main section.ballEncyclopedia .wrap .topBox p {
+  main section.ballEncyclopedia .wrap .leftBox .topBox p {
     font-size: 16px;
+  }
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox .sliderBtnBox {
+  display: flex;
+  gap: 10px;
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox .sliderBtnBox button {
+  position: relative;
+  --sliderBtnWidth: 70px;
+  width: var(--sliderBtnWidth);
+  height: var(--sliderBtnWidth);
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox .sliderBtnBox .sliderPrev {
+  background-color: #f7f7f7;
+  border: 1px solid #ee7600;
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox .sliderBtnBox .sliderPrev::before {
+  content: "";
+  position: absolute;
+  content: "";
+  --arrowPrevW: 10px;
+  width: var(--arrowPrevW);
+  height: var(--arrowPrevW);
+  border: solid #ee7600;
+  border-width: 0 4px 4px 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox .sliderBtnBox .sliderNext {
+  background-color: #ee7600;
+  border: 1px solid #f7f7f7;
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox .sliderBtnBox .sliderNext::before {
+  content: "";
+  position: absolute;
+  content: "";
+  --arrowNextW: 10px;
+  width: var(--arrowNextW);
+  height: var(--arrowNextW);
+  border: solid #f7f7f7;
+  border-width: 0 4px 4px 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox div.more {
+  width: 275px;
+  padding: 20px 0;
+  margin-top: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  background: linear-gradient(135deg, transparent 10px, #ee7600 0);
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox div.more p {
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  position: relative;
+}
+main section.ballEncyclopedia .wrap .leftBox .bottomBox div.more p::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-45deg) translateY(-50%);
+  top: 50%;
+  right: 40px;
+}
+@media (max-width: 430px) {
+  main section.ballEncyclopedia .wrap .leftBox .bottomBox div.more {
+    width: 180px;
+    padding: 12px 0;
+  }
+  main section.ballEncyclopedia .wrap .leftBox .bottomBox div.more p {
+    font-size: 16px;
+  }
+  main section.ballEncyclopedia .wrap .leftBox .bottomBox div.more p::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+  }
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track {
+  width: 850px;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f7f7;
+  padding: 40px;
+  position: relative;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem::after {
+  content: "";
+  position: absolute;
+  content: "";
+  width: calc(100% - 10px);
+  height: calc(100% - 10px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-bottom: #b5b5b5 3px solid;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle .newDateBox {
+  display: flex;
+  gap: 10px;
+  font-family: "Oswald", sans-serif;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle .newDateBox h2 {
+  font-size: 36px;
+  font-weight: normal;
+  line-height: 36px;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle .newDateBox h5 {
+  font-size: 16px;
+  font-weight: normal;
+  letter-spacing: 0.32px;
+  position: relative;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle .newDateBox h5::after {
+  content: "";
+  position: absolute;
+  content: "";
+  width: 120%;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #202020;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle i.newTag {
+  display: block;
+  font-style: normal;
+  background-color: #ededed;
+  padding: 8px 15px;
+  color: #4d4d4d;
+  font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo {
+  font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  width: 670px;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo h4 {
+  color: #202020;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding-bottom: 5px;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo p {
+  color: #4d4d4d;
+  font-size: 18px;
+  letter-spacing: 0.36px;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .arrowBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .arrowBox .arrowR {
+  display: block;
+  --arrowRW: 12px;
+  width: var(--arrowRW);
+  height: var(--arrowRW);
+  border: solid #ee7600;
+  border-width: 0 4px 4px 0;
+  transform: rotate(-45deg);
+}
+@media (min-width: 1181px) {
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem:hover::after {
+    content: "";
+    position: absolute;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem:hover .newContent .newInfo h4 {
+    color: #ee7600;
+  }
+}
+@media (max-width: 1320px) {
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track {
+    width: 650px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle .newDateBox h2 {
+    font-size: 28px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle .newDateBox h5 {
+    font-size: 14px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newTitle i.newTag {
+    font-size: 14px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo {
+    width: 450px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo h4 {
+    font-size: 24px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo p {
+    font-size: 16px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .arrowBox {
+    gap: 3px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .arrowBox .arrowR {
+    --arrowRW: 10px;
+  }
+}
+@media (max-width: 1100px) {
+  main section.ballEncyclopedia .wrap {
+    flex-direction: column;
+    gap: 20px;
+  }
+  main section.ballEncyclopedia .wrap .leftBox {
+    height: 350px;
+    width: 650px;
+  }
+}
+@media (max-width: 700px) {
+  main section.ballEncyclopedia .wrap .leftBox {
+    width: 100%;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track {
+    width: 600px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem {
+    justify-content: center;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo {
+    width: 450px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo h4 {
+    font-size: 24px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .newContent .newInfo p {
+    font-size: 16px;
+  }
+  main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-track .newItem .arrowBox {
+    display: none;
   }
 }
 

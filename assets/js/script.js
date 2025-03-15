@@ -34,54 +34,6 @@ $(".bannerSlider").slick({
 });
 
 //MIT專業橡膠球製造工廠 手機改輪播=================================
-/*
-function initializeSlick() {
-  if (window.innerWidth < 1200) {
-    if (!$(".factoryInfo").hasClass("slick-initialized")) {
-      $(".factoryInfo").slick({
-        dots: true, //是否顯示點點
-        dotsClass: "slick-dots", //點點的class
-        arrows: false, //是否顯示箭頭
-        infinite: true, //無限循環
-        slidesToShow: 5, // 一次顯示幾張
-        slidesToScroll: 1, // 一次滾動幾張
-        responsive: [
-          {
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
-            },
-          },
-          {
-            breakpoint: 700,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-            },
-          },
-          {
-            breakpoint: 520,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-            },
-          },
-        ],
-      });
-    }
-  } else {
-    if ($(".factoryInfo").hasClass("slick-initialized")) {
-      $(".factoryInfo").slick("unslick"); //取消slick
-    }
-  }
-}
-
-window.addEventListener("resize", initializeSlick); //視窗改變時重新初始化slick
-initializeSlick(); //頁面載入時初始化slick
-*/
-
-//MIT專業橡膠球製造工廠 手機改輪播=================================
 $(".factoryInfo").slick({
   dots: false, //是否顯示點點
   dotsClass: "slick-dots", //點點的class
@@ -115,4 +67,14 @@ $(".factoryInfo").slick({
       },
     },
   ],
+});
+
+//Ball Encyclopedia 球類百科 slick 輪播=================================
+$(".newSlider").slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  vertical: true, //垂直輪播
+  appendArrows: $(".sliderBtnBox"), //箭頭放置位置
+  prevArrow: '<button class="sliderPrev"></button>',
+  nextArrow: '<button class="sliderNext"></button>',
 });

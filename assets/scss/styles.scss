@@ -8,7 +8,7 @@
   box-sizing: border-box;
 }
 
-// 自訂義mixin================================================
+// 自訂義mixin===========================================================
 //section 主標題設定--------------------------
 @mixin titleBox($align: center) {
   @include wrap(1200px, 0, 0, center);
@@ -121,7 +121,11 @@
   padding-top: var(--sectionPaddingTB);
   padding-bottom: var(--sectionPaddingTB);
 }
+@mixin boxShadow() {
+  box-shadow: 0px 0px 10px 0px $lineColor;
+}
 
+//header===============================================================
 header {
   position: fixed;
   top: 0;
@@ -241,11 +245,12 @@ header {
     }
   }
 }
-
+//滾動時header變色
 header.scrolled {
   background-color: $mainColor;
 }
 
+//banner===============================================================
 .bannerArea {
   position: relative;
   .bannerSlider {
@@ -383,9 +388,9 @@ header.scrolled {
     }
   }
 }
-
+//main===============================================================
 main {
-  // MIT專業橡膠球製造工廠
+  // MIT專業橡膠球製造工廠--------------------------------------------
   section.factory {
     // min-height: 90vh;
     background-image: url(../img/factoryBg.png);
@@ -420,7 +425,7 @@ main {
               height: var(--w);
               background-color: $thirdColor;
               border-radius: 50%;
-              box-shadow: 0px 0px 10px 0px $textColor;
+              @include boxShadow();
               z-index: 1;
               img {
                 position: absolute;
@@ -566,7 +571,7 @@ main {
       }
     }
   }
-  //產品系列
+  //產品系列---------------------------------------------------------
   section.product {
     background-image: url(../img/productBg.png);
     background-size: cover;
@@ -577,7 +582,7 @@ main {
       padding-bottom: 5%;
     }
   }
-  //服務項目
+  //服務項目---------------------------------------------------------
   section.service {
     background-image: url(../img/serviceBg.png);
     background-size: cover;
@@ -651,7 +656,7 @@ main {
           @include hover {
             article {
               @include pseudoAfter("", absolute) {
-                box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+                @include boxShadow();
               }
             }
           }
@@ -690,20 +695,268 @@ main {
       }
     }
   }
-  //球類百科
+  //球類百科---------------------------------------------------------
   section.ballEncyclopedia {
     background-color: $thirdColor;
     .wrap {
       @include wrap(1500px, 50px, 50px, center);
       @include sectionPadding;
-      .topBox {
-        @include titleBox(flex-start);
-        margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .leftBox {
+        height: 450px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .topBox {
+          @include titleBox(flex-start);
+          margin: 0;
+        }
+        .bottomBox {
+          .sliderBtnBox {
+            display: flex;
+            gap: 10px;
+            button {
+              position: relative;
+              --sliderBtnWidth: 70px;
+              width: var(--sliderBtnWidth);
+              height: var(--sliderBtnWidth);
+            }
+            .sliderPrev {
+              background-color: $thirdColor;
+              border: 1px solid $mainColor;
+              @include pseudoBefore("", absolute) {
+                content: "";
+                --arrowPrevW: 10px;
+                width: var(--arrowPrevW);
+                height: var(--arrowPrevW);
+                border: solid $mainColor;
+                border-width: 0 4px 4px 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(135deg);
+              }
+            }
+            .sliderNext {
+              background-color: $mainColor;
+              border: 1px solid $thirdColor;
+              @include pseudoBefore("", absolute) {
+                content: "";
+                --arrowNextW: 10px;
+                width: var(--arrowNextW);
+                height: var(--arrowNextW);
+                border: solid $thirdColor;
+                border-width: 0 4px 4px 0;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%) rotate(-45deg);
+              }
+            }
+          }
+          div.more {
+            @include moreButton($btnBgColor, $btnColor, $btnColor);
+          }
+        }
+      }
+      .rightBox {
+        .newSlider {
+          .slick-list {
+            .slick-track {
+              width: 850px; //幻燈片寬度
+              .newItem {
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: $thirdColor;
+                padding: 40px;
+                position: relative;
+                //框陰影
+                @include pseudoAfter("", absolute) {
+                  content: "";
+                  width: calc(100% - 10px);
+                  height: calc(100% - 10px);
+                  left: 50%;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                  border-bottom: #b5b5b5 3px solid;
+                  @extend %ts;
+                }
+                .newContent {
+                  .newTitle {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    margin-bottom: 15px;
+                    .newDateBox {
+                      display: flex;
+                      gap: 10px;
+                      font-family: $thirdFont;
+                      h2 {
+                        font-size: $titleSize;
+                        font-weight: normal;
+                        line-height: $titleSize;
+                      }
+                      h5 {
+                        font-size: $h5Size;
+                        font-weight: normal;
+                        @include calcLetterSpacing($h5Size, 20);
+                        position: relative;
+                        @include pseudoAfter("", absolute) {
+                          content: "";
+                          width: 120%;
+                          height: 2px;
+                          bottom: 0;
+                          left: 50%;
+                          transform: translateX(-50%);
+                          background-color: $secondColor;
+                        }
+                      }
+                    }
+                    i.newTag {
+                      display: block;
+                      font-style: normal;
+                      background-color: #ededed;
+                      padding: 8px 15px;
+                      color: $textColor;
+                      font-family: $mainFont;
+                      font-size: $dataTextSizeMedium;
+                      @include calcLetterSpacing($dataTextSizeMedium, 100);
+                    }
+                  }
+                  .newInfo {
+                    font-family: $mainFont;
+                    width: 670px;
+                    h4 {
+                      color: $secondColor;
+                      font-size: $h4SizeSmall;
+                      @include calcLetterSpacing($h4SizeSmall, 50);
+                      padding-bottom: 5px;
+                      @extend %ts;
+                    }
+                    p {
+                      color: $textColor;
+                      font-size: $textTitleSizeMedium;
+                      @include calcLetterSpacing($textTitleSizeMedium, 20);
+                    }
+                  }
+                }
+                .arrowBox {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  gap: 5px;
+                  .arrowR {
+                    display: block;
+                    --arrowRW: 12px;
+                    width: var(--arrowRW);
+                    height: var(--arrowRW);
+                    border: solid $mainColor;
+                    border-width: 0 4px 4px 0;
+                    transform: rotate(-45deg);
+                  }
+                }
+                @extend %ts;
+                //hover效果
+                @include hover {
+                  //框陰影
+                  @include pseudoAfter("", absolute) {
+                    @include boxShadow();
+                  }
+                  .newContent {
+                    .newInfo {
+                      h4 {
+                        color: $mainColor;
+                      }
+                    }
+                  }
+                }
+              }
+              //RWD==
+              @include media(1320) {
+                width: 650px;
+                .newItem {
+                  .newContent {
+                    .newTitle {
+                      .newDateBox {
+                        h2 {
+                          font-size: $h3Size;
+                        }
+                        h5 {
+                          font-size: $h5SizeSmall;
+                        }
+                      }
+                      i.newTag {
+                        font-size: $dataTextSizeSmall;
+                      }
+                    }
+                    .newInfo {
+                      width: 450px;
+                      h4 {
+                        font-size: $h4Size;
+                      }
+                      p {
+                        font-size: $textTitleSizeSmall;
+                      }
+                    }
+                  }
+                  .arrowBox {
+                    gap: 3px;
+                    .arrowR {
+                      --arrowRW: 10px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      //RWD=============================
+      @include media(1100) {
+        flex-direction: column;
+        gap: 20px;
+        .leftBox {
+          height: 350px;
+          width: 650px;
+        }
+      }
+      @include media(700) {
+        .leftBox {
+          width: 100%;
+        }
+        .rightBox {
+          .newSlider {
+            .slick-list {
+              .slick-track {
+                width: 600px;
+                .newItem {
+                  justify-content: center;
+                  .newContent {
+                    .newInfo {
+                      width: 450px;
+                      h4 {
+                        font-size: $h4Size;
+                      }
+                      p {
+                        font-size: $textTitleSizeSmall;
+                      }
+                    }
+                  }
+                  .arrowBox {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
 }
-
+//footer===============================================================
 footer {
   width: 100%;
   background-color: $mainColor;
