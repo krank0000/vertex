@@ -661,6 +661,7 @@ main section.product {
   background-image: url(../img/productBg.png);
   background-size: cover;
   background-position: center;
+  position: relative;
 }
 main section.product .wrap {
   /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
@@ -668,11 +669,15 @@ main section.product .wrap {
   width: 100%;
   max-width: 1700px;
   margin: 0 auto;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
   /*響應式設計*/
-  padding-top: 5%;
-  padding-bottom: 5%;
+  --sectionPaddingTB: clamp(50px, 5%, 10%);
+  padding-top: var(--sectionPaddingTB);
+  padding-bottom: var(--sectionPaddingTB);
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
 }
 @media (max-width: 1180px) {
   main section.product .wrap {
@@ -684,6 +689,454 @@ main section.product .wrap {
   main section.product .wrap {
     padding-left: 20px;
     padding-right: 20px;
+  }
+}
+main section.product .wrap .leftBox {
+  width: clamp(370px, 50%, 50%);
+  display: flex;
+  flex-direction: column;
+}
+main section.product .wrap .leftBox .topBox {
+  margin-bottom: 30px;
+}
+main section.product .wrap .leftBox .topBox .titleBox {
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  /*響應式設計*/
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-bottom: clamp(20px, 5%, 40px);
+  padding: 0;
+}
+@media (max-width: 1180px) {
+  main section.product .wrap .leftBox .topBox .titleBox {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  main section.product .wrap .leftBox .topBox .titleBox {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+main section.product .wrap .leftBox .topBox .titleBox h2.titleSize {
+  position: relative;
+  font-size: 36px;
+  color: #ee7600;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1.8px;
+}
+main section.product .wrap .leftBox .topBox .titleBox h2.titleSize::before {
+  content: "＂";
+  position: absolute;
+  color: #ee7600;
+  font-size: 30px;
+  top: -20px;
+  left: 0;
+}
+main section.product .wrap .leftBox .topBox .titleBox h2.titleSizeSmall {
+  font-size: 30px;
+  color: #202020;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 0.6px;
+}
+main section.product .wrap .leftBox .topBox .titleBox p {
+  padding: 10px 0;
+  color: #4d4d4d;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 0.36px;
+  line-height: 27px;
+}
+@media (max-width: 768px) {
+  main section.product .wrap .leftBox .topBox .titleBox h2.titleSize {
+    font-size: 28px;
+  }
+  main section.product .wrap .leftBox .topBox .titleBox h2.titleSizeSmall {
+    font-size: 22px;
+  }
+  main section.product .wrap .leftBox .topBox .titleBox p {
+    font-size: 16px;
+  }
+}
+main section.product .wrap .leftBox .topBox .titleBox h2.titleSizeSmall,
+main section.product .wrap .leftBox .topBox .titleBox p {
+  color: #f7f7f7;
+  text-align: left;
+}
+main section.product .wrap .leftBox .topBox .other {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+main section.product .wrap .leftBox .topBox .other div.more {
+  width: 275px;
+  padding: 20px 0;
+  margin-top: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  text-align: center;
+  background: linear-gradient(135deg, transparent 10px, #ee7600 0);
+}
+main section.product .wrap .leftBox .topBox .other div.more p {
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  position: relative;
+}
+main section.product .wrap .leftBox .topBox .other div.more p::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(-45deg) translateY(-50%);
+  top: 50%;
+  right: 40px;
+}
+@media (max-width: 430px) {
+  main section.product .wrap .leftBox .topBox .other div.more {
+    width: 180px;
+    padding: 12px 0;
+  }
+  main section.product .wrap .leftBox .topBox .other div.more p {
+    font-size: 16px;
+  }
+  main section.product .wrap .leftBox .topBox .other div.more p::after {
+    content: "";
+    position: absolute;
+    right: 20px;
+  }
+}
+main section.product .wrap .leftBox .topBox .other .slickNumberBox {
+  display: flex;
+  align-items: end;
+  font-family: "Oswald", sans-serif;
+}
+main section.product .wrap .leftBox .topBox .other .slickNumberBox .currentTxt {
+  color: #f7f7f7;
+  font-size: 30px;
+  letter-spacing: 0.6px;
+}
+main section.product .wrap .leftBox .topBox .other .slickNumberBox .totalTxt {
+  padding-left: 10px;
+  color: #4d4d4d;
+  font-size: 20px;
+  letter-spacing: 0.4px;
+}
+main section.product .wrap .leftBox .bottomBox {
+  width: 100%;
+  --ballSamllW: 330px;
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball {
+  width: var(--ballSamllW);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a {
+  width: var(--ballSamllW);
+  display: block;
+  text-decoration: none;
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a figure {
+  background-color: white;
+  position: relative;
+  width: var(--ballSamllW);
+  height: var(--ballSamllW);
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a figure img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a figure i {
+  display: block;
+  font-style: normal;
+  color: #f7f7f7;
+  font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.32px;
+  position: relative;
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a figure i::before {
+  content: "";
+  position: absolute;
+  content: "";
+  width: 120px;
+  height: 40px;
+  bottom: -10px;
+  right: 30px;
+  background-color: #ee7600;
+  transform: skew(-30deg);
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a figure i::after {
+  content: "健身用途";
+  position: absolute;
+  width: 120px;
+  height: 40px;
+  bottom: -10px;
+  right: 30px;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a .ballInfo {
+  color: #f7f7f7;
+  font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  margin-top: 20px;
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a .ballInfo h4 {
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+main section.product .wrap .leftBox .bottomBox .ballSlider .ball a .ballInfo p {
+  padding-top: 5px;
+  font-size: 16px;
+  letter-spacing: 0.32px;
+}
+main section.product .wrap .rightBox {
+  --ballW: 600px;
+  width: 50%;
+  padding: 50px;
+  margin-left: 50px;
+  position: relative;
+}
+main section.product .wrap .rightBox .ballSliderRight .ball {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--ballW);
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a {
+  width: var(--ballW);
+  display: block;
+  text-decoration: none;
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a figure {
+  clip-path: polygon(0% 0%, 100% 0, 100% 88%, 88% 100%, 0% 100%);
+  background-color: #fff;
+  position: relative;
+  width: var(--ballW);
+  height: var(--ballW);
+  overflow: hidden;
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a figure img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a figure i {
+  display: block;
+  font-style: normal;
+  color: #f7f7f7;
+  font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  font-size: 16px;
+  letter-spacing: 0.32px;
+  position: relative;
+  top: -90%;
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a figure i::before {
+  content: "";
+  position: absolute;
+  content: "";
+  width: 120px;
+  height: 40px;
+  bottom: -10px;
+  right: 30px;
+  background-color: #ee7600;
+  transform: skew(-30deg);
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a figure i::after {
+  content: "健身用途";
+  position: absolute;
+  width: 120px;
+  height: 40px;
+  bottom: -10px;
+  right: 30px;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a figure .ballInfo {
+  color: #202020;
+  font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+  margin-top: 20px;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 80%;
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a figure .ballInfo h4 {
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  font-size: 20px;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+main section.product .wrap .rightBox .ballSliderRight .ball a figure .ballInfo p {
+  padding-top: 5px;
+  font-size: 16px;
+  letter-spacing: 0.32px;
+}
+main section.product .wrap .rightBox::before {
+  content: "";
+  position: absolute;
+  content: "";
+  width: calc(var(--ballW) + 50px);
+  height: calc(var(--ballW) + 50px);
+  background-image: url(../img/ballBg.png);
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+main section.product .ballSliderBtnBox {
+  padding: 0 2vw;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+main section.product .ballSliderBtnBox button {
+  background-color: tansparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  width: 60px;
+}
+main section.product .ballSliderBtnBox .ballSliderPrev::before {
+  content: "";
+  position: absolute;
+  content: "";
+  --arrowPrevW: 30px;
+  width: var(--arrowPrevW);
+  height: var(--arrowPrevW);
+  border: solid #f7f7f7;
+  border-width: 0 4px 4px 0;
+  opacity: 0.5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(135deg);
+}
+main section.product .ballSliderBtnBox .ballSliderNext::before {
+  content: "";
+  position: absolute;
+  content: "";
+  --arrowNextW: 30px;
+  width: var(--arrowNextW);
+  height: var(--arrowNextW);
+  border: solid #f7f7f7;
+  border-width: 0 4px 4px 0;
+  opacity: 0.5;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+@media (max-width: 1700px) {
+  main section.product .wrap {
+    justify-content: center;
+  }
+  main section.product .wrap .rightBox {
+    transform: scale(0.8);
+    margin-left: 0px;
+    padding: 0px;
+  }
+  main section.product .wrap .rightBox .ballSliderRight {
+    padding: 0;
+  }
+}
+@media (max-width: 1560px) {
+  main section.product .wrap .leftBox .bottomBox {
+    --ballSamllW: 270px;
+  }
+  main section.product .wrap .rightBox {
+    width: 50%;
+    transform: scale(0.7);
+  }
+}
+@media (max-width: 1350px) {
+  main section.product .wrap {
+    padding-bottom: 150px;
+  }
+  main section.product .wrap .leftBox {
+    width: 100%;
+  }
+  main section.product .wrap .rightBox {
+    display: none;
+  }
+  main section.product .ballSliderBtnBox {
+    display: flex;
+    gap: 10px;
+    width: 200px;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  main section.product .ballSliderBtnBox button {
+    position: relative;
+    --sliderBtnWidth: 70px;
+    width: var(--sliderBtnWidth);
+    height: var(--sliderBtnWidth);
+  }
+  main section.product .ballSliderBtnBox .ballSliderPrev {
+    background-color: #ee7600;
+    border: 1px solid #f7f7f7;
+  }
+  main section.product .ballSliderBtnBox .ballSliderPrev::before {
+    content: "";
+    position: absolute;
+    content: "";
+    --arrowPrevW: 10px;
+    width: var(--arrowPrevW);
+    height: var(--arrowPrevW);
+    border: solid #f7f7f7;
+    border-width: 0 4px 4px 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+  main section.product .ballSliderBtnBox .ballSliderNext {
+    background-color: #f7f7f7;
+    border: 1px solid #ee7600;
+  }
+  main section.product .ballSliderBtnBox .ballSliderNext::before {
+    content: "";
+    position: absolute;
+    content: "";
+    --arrowNextW: 10px;
+    width: var(--arrowNextW);
+    height: var(--arrowNextW);
+    border: solid #ee7600;
+    border-width: 0 4px 4px 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}
+@media (max-width: 600px) {
+  main section.product .wrap .leftBox .bottomBox {
+    --ballSamllW: 300px;
   }
 }
 main section.service {

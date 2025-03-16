@@ -576,10 +576,362 @@ main {
     background-image: url(../img/productBg.png);
     background-size: cover;
     background-position: center;
+    position: relative;
     .wrap {
-      @include wrap(1700px, 50px, 50px, center);
-      padding-top: 5%;
-      padding-bottom: 5%;
+      @include wrap(1700px, 100px, 100px, center);
+      @include sectionPadding;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      // gap: 50px;
+      .leftBox {
+        width: clamp(370px, 50%, 50%);
+        display: flex;
+        flex-direction: column;
+        .topBox {
+          // width: calc(400px + 330px);
+          margin-bottom: 30px;
+          .titleBox {
+            @include titleBox(flex-start);
+            padding: 0;
+            h2.titleSizeSmall,
+            p {
+              color: $thirdColor;
+              text-align: left;
+            }
+          }
+          .other {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            div.more {
+              @include moreButton($btnBgColor, $btnColor, $btnColor);
+            }
+            // slickNumber
+            .slickNumberBox {
+              display: flex;
+              align-items: end;
+              font-family: $thirdFont;
+              .currentTxt {
+                color: $thirdColor;
+                font-size: $titleSizeSmall;
+                @include calcLetterSpacing($titleSizeSmall, 20);
+              }
+              .totalTxt {
+                padding-left: calc($textTitleSize / 2);
+                color: $textColor;
+                font-size: $textTitleSize;
+                @include calcLetterSpacing($textTitleSize, 20);
+              }
+            }
+          }
+        }
+        .bottomBox {
+          width: 100%;
+          --ballSamllW: 330px;
+          .ballSlider {
+            //輪播項目
+            .ball {
+              width: var(--ballSamllW);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              a {
+                width: var(--ballSamllW);
+                display: block;
+                text-decoration: none;
+                figure {
+                  background-color: white;
+                  position: relative;
+                  width: var(--ballSamllW);
+                  height: var(--ballSamllW);
+                  img {
+                    @include imgCover();
+                  }
+                  i {
+                    display: block;
+                    font-style: normal;
+                    color: $thirdColor;
+                    font-family: $mainFont;
+                    font-size: $decoTitleSize;
+                    @include calcLetterSpacing($decoTitleSize, 20);
+                    position: relative;
+                    //底部矩形
+                    @include pseudoBefore("", absolute) {
+                      content: "";
+                      width: 120px;
+                      height: 40px;
+                      bottom: -10px;
+                      right: 30px;
+                      background-color: $mainColor;
+                      transform: skew(-30deg);
+                    }
+                    //文字
+                    @include pseudoAfter("健身用途", absolute) {
+                      width: 120px;
+                      height: 40px;
+                      bottom: -10px;
+                      right: 30px;
+                      font-size: $dataTextSize;
+                      line-height: 40px;
+                      text-align: center;
+                    }
+                  }
+                }
+                .ballInfo {
+                  color: $thirdColor;
+                  font-family: $mainFont;
+                  margin-top: 20px;
+                  h4 {
+                    text-transform: uppercase;
+                    font-family: $thirdFont;
+                    font-size: $h4SizeSmall;
+                    font-weight: normal;
+                    @include calcLetterSpacing($h4SizeSmall, 50);
+                  }
+                  p {
+                    padding-top: 5px;
+                    font-size: $textTitleSizeSmall;
+                    @include calcLetterSpacing($textTitleSizeSmall, 20);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      .rightBox {
+        --ballW: 600px;
+        width: 50%;
+        padding: 50px;
+        margin-left: 50px;
+        position: relative;
+        .ballSliderRight {
+          //輪播項目
+          .ball {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: var(--ballW);
+            a {
+              width: var(--ballW);
+              display: block;
+              text-decoration: none;
+              figure {
+                clip-path: polygon(0% 0%, 100% 0, 100% 88%, 88% 100%, 0% 100%);
+                background-color: #fff;
+                position: relative;
+                width: var(--ballW);
+                height: var(--ballW);
+                overflow: hidden;
+                img {
+                  @include imgCover();
+                }
+                i {
+                  display: block;
+                  font-style: normal;
+                  color: $thirdColor;
+                  font-family: $mainFont;
+                  font-size: $decoTitleSize;
+                  @include calcLetterSpacing($decoTitleSize, 20);
+                  position: relative;
+                  top: -90%;
+                  //底部矩形
+                  @include pseudoBefore("", absolute) {
+                    content: "";
+                    width: 120px;
+                    height: 40px;
+                    bottom: -10px;
+                    right: 30px;
+                    background-color: $mainColor;
+                    transform: skew(-30deg);
+                  }
+                  //文字
+                  @include pseudoAfter("健身用途", absolute) {
+                    width: 120px;
+                    height: 40px;
+                    bottom: -10px;
+                    right: 30px;
+                    font-size: $dataTextSize;
+                    line-height: 40px;
+                    text-align: center;
+                  }
+                }
+                .ballInfo {
+                  color: $secondColor;
+                  font-family: $mainFont;
+                  margin-top: 20px;
+                  position: absolute;
+                  bottom: 20px;
+                  left: 20px;
+                  width: 80%;
+                  h4 {
+                    text-transform: uppercase;
+                    font-family: $thirdFont;
+                    font-size: $h4SizeSmall;
+                    font-weight: normal;
+                    @include calcLetterSpacing($h4SizeSmall, 50);
+                  }
+                  p {
+                    padding-top: 5px;
+                    font-size: $textTitleSizeSmall;
+                    @include calcLetterSpacing($textTitleSizeSmall, 20);
+                  }
+                }
+              }
+            }
+          }
+        }
+        //背景圖
+        @include pseudoBefore("", absolute) {
+          content: "";
+          width: calc(var(--ballW) + 50px);
+          height: calc(var(--ballW) + 50px);
+          background-image: url(../img/ballBg.png);
+          background-size: cover;
+          background-position: center;
+          z-index: 0;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    // slickBall main btn
+    .ballSliderBtnBox {
+      padding: 0 2vw;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      button {
+        background-color: tansparent;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        width: 60px;
+      }
+      .ballSliderPrev {
+        @include pseudoBefore("", absolute) {
+          content: "";
+          --arrowPrevW: 30px;
+          width: var(--arrowPrevW);
+          height: var(--arrowPrevW);
+          border: solid $thirdColor;
+          border-width: 0 4px 4px 0;
+          opacity: 0.5;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(135deg);
+        }
+      }
+      .ballSliderNext {
+        @include pseudoBefore("", absolute) {
+          content: "";
+          --arrowNextW: 30px;
+          width: var(--arrowNextW);
+          height: var(--arrowNextW);
+          border: solid $thirdColor;
+          border-width: 0 4px 4px 0;
+          opacity: 0.5;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(-45deg);
+        }
+      }
+    }
+    //RWD=============================
+    @include media(1700) {
+      .wrap {
+        justify-content: center;
+        .rightBox {
+          transform: scale(0.8);
+          margin-left: 0px;
+          padding: 0px;
+          .ballSliderRight {
+            padding: 0;
+          }
+        }
+      }
+    }
+    @include media(1560) {
+      .wrap {
+        .leftBox {
+          .bottomBox {
+            --ballSamllW: 270px;
+          }
+        }
+        .rightBox {
+          width: 50%;
+          transform: scale(0.7);
+        }
+      }
+    }
+    @include media(1350) {
+      .wrap {
+        padding-bottom: 150px;
+        .leftBox {
+          width: 100%;
+        }
+        .rightBox {
+          display: none;
+        }
+      }
+      .ballSliderBtnBox {
+        display: flex;
+        gap: 10px;
+        width: 200px;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        button {
+          position: relative;
+          --sliderBtnWidth: 70px;
+          width: var(--sliderBtnWidth);
+          height: var(--sliderBtnWidth);
+        }
+        .ballSliderPrev {
+          background-color: $mainColor;
+          border: 1px solid $thirdColor;
+          @include pseudoBefore("", absolute) {
+            content: "";
+            --arrowPrevW: 10px;
+            width: var(--arrowPrevW);
+            height: var(--arrowPrevW);
+            border: solid $thirdColor;
+            border-width: 0 4px 4px 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(135deg);
+          }
+        }
+        .ballSliderNext {
+          background-color: $thirdColor;
+          border: 1px solid $mainColor;
+          @include pseudoBefore("", absolute) {
+            content: "";
+            --arrowNextW: 10px;
+            width: var(--arrowNextW);
+            height: var(--arrowNextW);
+            border: solid $mainColor;
+            border-width: 0 4px 4px 0;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+          }
+        }
+      }
+    }
+    @include media(600) {
+      .wrap {
+        .leftBox {
+          .bottomBox {
+            --ballSamllW: 300px;
+          }
+        }
+      }
     }
   }
   //服務項目---------------------------------------------------------

@@ -78,3 +78,50 @@ $(".newSlider").slick({
   prevArrow: '<button class="sliderPrev"></button>',
   nextArrow: '<button class="sliderNext"></button>',
 });
+
+//產品介紹 球類
+// slickBall main
+$(".ballSlider").slick({
+  slidesToShow: 2,
+  slidesToScroll: 1,
+  infinite: true,
+  // autoplay: true,
+  // autoplaySpeed: 3000,
+  appendArrows: $(".ballSliderBtnBox"), //箭頭放置位置
+  prevArrow: '<button class="ballSliderPrev"></button>',
+  nextArrow: '<button class="ballSliderNext"></button>',
+  asNavFor: ".ballSliderRight", //連動
+  responsive: [
+    {
+      breakpoint: 1350,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 885,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+  ],
+});
+//slickBall Right
+$(".ballSliderRight").slick({
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  infinite: true,
+  // autoplay: true,
+  // autoplaySpeed: 3000,
+  arrows: false, //是否顯示箭頭
+  asNavFor: ".ballSlider", //連動
+});
