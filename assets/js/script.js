@@ -79,14 +79,24 @@ $(".newSlider").slick({
   nextArrow: '<button class="sliderNext"></button>',
 });
 
-//產品介紹 球類
+//產品介紹 球類=========================================================
 // slickBall main
+$(".ballSlider").on(
+  "init reInit afterChange",
+  function (event, slick, currentSlide) {
+    // 當前幻燈片索引 (index 從 0 開始)
+    let i = (currentSlide ? currentSlide : 0) + 1;
+    // 補零格式 (01, 02, ...)
+    let formattedNumber = i < 10 ? "0" + i : i;
+    $(".slickNumberBox .currentTxt").text(formattedNumber);
+  }
+);
 $(".ballSlider").slick({
   slidesToShow: 2,
   slidesToScroll: 1,
   infinite: true,
-  // autoplay: true,
-  // autoplaySpeed: 3000,
+  autoplay: true,
+  autoplaySpeed: 3000,
   appendArrows: $(".ballSliderBtnBox"), //箭頭放置位置
   prevArrow: '<button class="ballSliderPrev"></button>',
   nextArrow: '<button class="ballSliderNext"></button>',
@@ -120,8 +130,8 @@ $(".ballSliderRight").slick({
   slidesToShow: 1,
   slidesToScroll: 1,
   infinite: true,
-  // autoplay: true,
-  // autoplaySpeed: 3000,
+  autoplay: true,
+  autoplaySpeed: 3000,
   arrows: false, //是否顯示箭頭
   asNavFor: ".ballSlider", //連動
 });

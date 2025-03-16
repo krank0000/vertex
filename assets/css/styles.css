@@ -1704,6 +1704,7 @@ main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-trac
   }
   main section.ballEncyclopedia .wrap .leftBox {
     justify-content: center;
+    height: 400px;
   }
   main section.ballEncyclopedia .wrap .leftBox .topBox {
     /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
@@ -1782,6 +1783,10 @@ main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-trac
     display: flex;
     flex-direction: column;
     align-items: center;
+  }
+  main section.ballEncyclopedia .wrap .leftBox .bottomBox .sliderBtnBox {
+    order: 1;
+    margin-top: 20px;
   }
   main section.ballEncyclopedia .wrap .rightBox {
     width: 700px;
