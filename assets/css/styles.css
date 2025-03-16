@@ -14,7 +14,7 @@ main section.ballEncyclopedia .wrap .rightBox .newSlider .slick-list .slick-trac
 header {
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 998;
   width: 100%;
 }
 header .wrap {
@@ -118,10 +118,12 @@ header .wrap .rightBox .languageBox ul.languageList {
 }
 header .wrap .rightBox .languageBox ul.languageList li {
   list-style: none;
-  padding: 10px 0;
   text-align: center;
 }
 header .wrap .rightBox .languageBox ul.languageList li a {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
   text-decoration: none;
   color: #f7f7f7;
   font-size: 18px;
@@ -1947,4 +1949,124 @@ footer .wrap .footerCopyright {
 footer .wrap .footerCopyright a {
   text-decoration: none;
   color: #f7f7f7;
+}
+
+aside {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  z-index: 1000;
+  height: 100vh;
+  width: 375px;
+  background-color: #ee7600;
+}
+aside .topBox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 20px;
+}
+aside .topBox img.logo {
+  width: 100px;
+}
+aside .topBox i {
+  color: #fff;
+  font-size: 30px;
+}
+aside nav ul {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+aside nav ul li {
+  list-style: none;
+}
+aside nav ul li a {
+  display: block;
+  padding: 15px 5vh;
+  border-bottom: #f7f7f7 1px solid;
+  text-decoration: none;
+  color: #f7f7f7;
+  font-size: 18px;
+  letter-spacing: 0.9px;
+}
+aside .bottomBox {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+aside .bottomBox .languageBox {
+  padding-left: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+aside .bottomBox .languageBox .defaultBox {
+  padding: 5vh 0;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+  color: #f7f7f7;
+}
+aside .bottomBox .languageBox .defaultBox .languageCurrent {
+  text-transform: uppercase;
+  position: relative;
+  margin: 0 20px 0 10px;
+  cursor: pointer;
+  letter-spacing: 0.9px;
+}
+aside .bottomBox .languageBox .defaultBox .languageCurrent::after {
+  content: " |";
+  position: absolute;
+  margin-left: 10px;
+  font-weight: 200;
+}
+aside .bottomBox .languageBox ul.languageList {
+  display: none;
+  background-color: #202020;
+  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
+  /*主要樣式設定*/
+  width: 100%;
+  max-width: 100px;
+  margin: 0 auto;
+  padding-left: 0;
+  padding-right: 0;
+  /*響應式設計*/
+}
+@media (max-width: 1180px) {
+  aside .bottomBox .languageBox ul.languageList {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+@media (max-width: 768px) {
+  aside .bottomBox .languageBox ul.languageList {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+aside .bottomBox .languageBox ul.languageList li {
+  list-style: none;
+  text-align: center;
+}
+aside .bottomBox .languageBox ul.languageList li a {
+  display: block;
+  width: 100%;
+  padding: 10px 0;
+  text-decoration: none;
+  color: #f7f7f7;
+  font-size: 18px;
+  font-family: "Oswald", sans-serif;
+}
+
+.assideBlack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
 }/*# sourceMappingURL=styles.css.map */

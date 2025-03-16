@@ -129,7 +129,7 @@
 header {
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 998;
   width: 100%;
   @extend %ts; //transition: all 0.5s ease-in-out;
 
@@ -193,9 +193,11 @@ header {
           @include wrap(100px, 0, 0, center);
           li {
             list-style: none;
-            padding: 10px 0;
             text-align: center;
             a {
+              display: block;
+              width: 100%;
+              padding: 10px 0;
               text-decoration: none;
               color: $thirdColor;
               font-size: $textTitleSizeMedium;
@@ -1463,4 +1465,107 @@ footer {
       }
     }
   }
+}
+
+//aside===============================================================
+aside {
+  position: fixed;
+  top: 0;
+  right: -100%; // 初始位置在視窗外
+  z-index: 1000;
+  height: 100vh;
+  width: 375px;
+  background-color: $mainColor;
+  .topBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 20px;
+    img.logo {
+      width: 100px;
+    }
+    i {
+      color: $btnColor;
+      font-size: 30px;
+    }
+  }
+  nav {
+    ul {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+      li {
+        list-style: none;
+        a {
+          display: block;
+          padding: 15px 5vh;
+          border-bottom: $thirdColor 1px solid;
+          text-decoration: none;
+          color: $linkColor;
+          font-size: $textTitleSizeMedium;
+          @include calcLetterSpacing($textTitleSizeMedium, 50);
+        }
+      }
+    }
+  }
+  .bottomBox {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    .languageBox {
+      padding-left: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      .defaultBox {
+        padding: 5vh 0;
+        display: flex;
+        align-items: center;
+        font-size: $textTitleSizeMedium;
+        font-family: $thirdFont;
+        color: $thirdColor;
+        .languageCurrent {
+          text-transform: uppercase;
+          position: relative;
+          margin: 0 20px 0 10px;
+          cursor: pointer;
+          @include calcLetterSpacing($textTitleSizeMedium, 50);
+          @include pseudoAfter(" |", absolute) {
+            margin-left: 10px;
+            font-weight: 200;
+          }
+        }
+      }
+      ul.languageList {
+        display: none;
+        // position: absolute;
+        background-color: $secondColor;
+        @include wrap(100px, 0, 0, center);
+        li {
+          list-style: none;
+          text-align: center;
+          a {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            text-decoration: none;
+            color: $thirdColor;
+            font-size: $textTitleSizeMedium;
+            font-family: $thirdFont;
+          }
+        }
+      }
+    }
+  }
+}
+
+.assideBlack {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
 }

@@ -8,6 +8,22 @@ window.addEventListener("scroll", function () {
     header.classList.remove("scrolled");
   }
 });
+//language按鈕
+$(".defaultBox").on("click", function () {
+  $(".languageList").slideToggle();
+});
+
+//menu按鈕
+$(".menuBtn").on("click", function () {
+  $("aside").animate({ right: "0" }, 300); // aside 從左至右滑動出現
+  $(".assideBlack").fadeIn(); // 黑色背景淡入
+});
+
+//asideBtn按下時，移除.show
+$(".asideBtn").on("click", function () {
+  $("aside").animate({ right: "-100%" }, 300); // aside 從右至左滑動收起
+  $(".assideBlack").fadeOut(); // 黑色背景淡出
+});
 
 //banner 點擊滾動下一頁=========================================
 window.addEventListener("DOMContentLoaded", function () {
