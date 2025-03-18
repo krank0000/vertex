@@ -615,7 +615,7 @@ main {
             height: inherit;
             position: relative;
             .slick-slide {
-              margin-top: 20px;
+              // margin-top: 20px;
             }
             .slick-slide:nth-child(odd) {
               height: inherit;
@@ -811,12 +811,12 @@ main {
             justify-content: center;
             align-items: center;
             width: var(--ballW);
+            clip-path: polygon(0% 0%, 100% 0, 100% 85%, 85% 100%, 0% 100%);
             a {
               width: var(--ballW);
-              display: block;
+              display: flex;
               text-decoration: none;
               figure {
-                clip-path: polygon(0% 0%, 100% 0, 100% 88%, 88% 100%, 0% 100%);
                 background-color: #fff;
                 position: relative;
                 width: var(--ballW);
@@ -1165,7 +1165,7 @@ main {
           }
         }
       }
-      div.colorChange {
+      div.more {
         @include moreButton(
           $btnBgColor,
           $btnColor,

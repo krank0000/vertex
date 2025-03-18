@@ -683,9 +683,6 @@ main section.factory .wrap .bottomBox .slick-list .slick-track {
   height: inherit;
   position: relative;
 }
-main section.factory .wrap .bottomBox .slick-list .slick-track .slick-slide {
-  margin-top: 20px;
-}
 main section.factory .wrap .bottomBox .slick-list .slick-track .slick-slide:nth-child(odd) {
   height: inherit;
   display: flex;
@@ -1009,14 +1006,14 @@ main section.product .wrap .rightBox .ballSliderRight .ball {
   justify-content: center;
   align-items: center;
   width: var(--ballW);
+  clip-path: polygon(0% 0%, 100% 0, 100% 85%, 85% 100%, 0% 100%);
 }
 main section.product .wrap .rightBox .ballSliderRight .ball a {
   width: var(--ballW);
-  display: block;
+  display: flex;
   text-decoration: none;
 }
 main section.product .wrap .rightBox .ballSliderRight .ball a figure {
-  clip-path: polygon(0% 0%, 100% 0, 100% 88%, 88% 100%, 0% 100%);
   background-color: #fff;
   position: relative;
   width: var(--ballW);
@@ -1460,7 +1457,7 @@ main section.service .wrap .bottomBox .serviceItem article .textBox p {
     font-size: 14px;
   }
 }
-main section.service .wrap div.colorChange {
+main section.service .wrap div.more {
   width: 275px;
   padding: 20px 0;
   margin-top: 1rem;
@@ -1472,14 +1469,14 @@ main section.service .wrap div.colorChange {
   transition: all 0.3s ease;
   clip-path: polygon(10% 0, 100% 0%, 100% 100%, 0 100%, 0 40%);
 }
-main section.service .wrap div.colorChange p {
+main section.service .wrap div.more p {
   font-size: 18px;
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   position: relative;
   transition: color 0.3s ease;
 }
-main section.service .wrap div.colorChange p::after {
+main section.service .wrap div.more p::after {
   content: "";
   position: absolute;
   width: 10px;
@@ -1492,28 +1489,28 @@ main section.service .wrap div.colorChange p::after {
   transition: border-color 0.3s ease;
 }
 @media (min-width: 1181px) {
-  main section.service .wrap div.colorChange:hover {
+  main section.service .wrap div.more:hover {
     background-color: #fff;
     color: #ee7600;
   }
-  main section.service .wrap div.colorChange:hover p {
+  main section.service .wrap div.more:hover p {
     color: #ee7600;
   }
-  main section.service .wrap div.colorChange:hover p::after {
+  main section.service .wrap div.more:hover p::after {
     content: "";
     position: absolute;
     border-color: #ee7600;
   }
 }
 @media (max-width: 768px) {
-  main section.service .wrap div.colorChange {
+  main section.service .wrap div.more {
     width: 180px;
     padding: 12px 0;
   }
-  main section.service .wrap div.colorChange p {
+  main section.service .wrap div.more p {
     font-size: 16px;
   }
-  main section.service .wrap div.colorChange p::after {
+  main section.service .wrap div.more p::after {
     content: "";
     position: absolute;
     right: 20px;
