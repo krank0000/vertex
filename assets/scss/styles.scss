@@ -234,9 +234,11 @@ header {
       align-items: center;
       gap: 20px;
       .languageBox {
+        width: 150px;
         .defaultBox {
           padding: 5vh 0;
           display: flex;
+          justify-content: center;
           align-items: center;
           font-size: $textTitleSizeMedium;
           font-family: $thirdFont;
@@ -254,17 +256,17 @@ header {
           }
         }
         ul.languageList {
+          width: inherit;
           display: none;
           position: absolute;
           background-color: $secondColor;
-          @include wrap(100px, 0, 0, center);
           li {
             list-style: none;
             text-align: center;
             a {
               display: block;
               width: 100%;
-              padding: 10px 0;
+              padding: 10px;
               text-decoration: none;
               color: $thirdColor;
               font-size: $textTitleSizeMedium;
@@ -500,7 +502,8 @@ main {
           height: 450px;
           display: flex;
           justify-content: space-between;
-          align-items: start;
+          align-items: center;
+          flex-direction: column;
 
           .factoryItem {
             display: flex;
@@ -509,7 +512,6 @@ main {
             gap: 20px;
             font-family: $mainFont;
             .iconBox {
-              margin-top: 20px;
               position: relative;
               --w: 184px;
               width: var(--w);
@@ -553,8 +555,11 @@ main {
                 width: 110%;
                 height: 110%;
                 border: 5px dotted $mainColor;
-                opacity: 0;
                 border-radius: 50%;
+                opacity: 0;
+                // width: 118%;
+                // height: 118%;
+                // background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='100' ry='100' stroke='%23EE7600FF' stroke-width='10' stroke-dasharray='5%2c20' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
               }
             }
             .itemText {
@@ -580,11 +585,35 @@ main {
                   color: $thirdColor;
                   background-color: $mainColor;
                 }
-                &::after {
+                @include pseudoAfter("", absolute) {
                   opacity: 1;
                 }
               }
             }
+          }
+          .slick-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            li {
+              list-style: none;
+              button {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background-color: $thirdColor;
+                border: 2px solid $mainColor;
+                cursor: pointer;
+                font-size: 0; //隱藏數字
+              }
+              &.slick-active button {
+                background-color: $mainColor;
+              }
+            }
+          }
+          //RWD=====
+          @include media(1200) {
+            height: 350px;
           }
         }
         //RWD=============================
@@ -596,7 +625,6 @@ main {
                 --w: 140px;
               }
               .itemText {
-                // width: 100%;
                 h4 {
                   font-size: $h5Size;
                 }
@@ -615,46 +643,18 @@ main {
             height: inherit;
             position: relative;
             .slick-slide {
-              // margin-top: 20px;
+              margin-top: 40px;
+              padding-bottom: 40px;
             }
             .slick-slide:nth-child(odd) {
               height: inherit;
               display: flex;
               justify-content: flex-end;
-              //RWD==
-              @include media(1200) {
-                justify-content: center;
-              }
             }
-          }
-        }
-        //RWD===slick dots==================
-        @include media(1200) {
-          .factoryInfo {
-            flex-direction: column;
-            align-items: center;
-            height: 300px;
-            .slick-list {
-              width: 100%;
-            }
-            .slick-dots {
-              display: flex;
-              justify-content: center;
-              gap: 10px;
-              li {
-                list-style: none;
-                button {
-                  width: 10px;
-                  height: 10px;
-                  border-radius: 50%;
-                  background-color: $thirdColor;
-                  border: 2px solid $mainColor;
-                  cursor: pointer;
-                  font-size: 0; //隱藏數字
-                }
-                &.slick-active button {
-                  background-color: $mainColor;
-                }
+            //RWD==
+            @include media(1200) {
+              .slick-slide:nth-child(odd) {
+                justify-content: flex-start;
               }
             }
           }
@@ -1736,6 +1736,9 @@ aside {
         }
       }
     }
+  }
+  @include media(375) {
+    width: 100%;
   }
 }
 .assideBlack {

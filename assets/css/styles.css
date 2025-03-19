@@ -97,9 +97,13 @@ header .wrap .rightBox {
   align-items: center;
   gap: 20px;
 }
+header .wrap .rightBox .languageBox {
+  width: 150px;
+}
 header .wrap .rightBox .languageBox .defaultBox {
   padding: 5vh 0;
   display: flex;
+  justify-content: center;
   align-items: center;
   font-size: 18px;
   font-family: "Oswald", sans-serif;
@@ -119,29 +123,10 @@ header .wrap .rightBox .languageBox .defaultBox .languageCurrent::after {
   font-weight: 200;
 }
 header .wrap .rightBox .languageBox ul.languageList {
+  width: inherit;
   display: none;
   position: absolute;
   background-color: #202020;
-  /*這段程式碼決定 margin，讓內容根據 $position 對齊左側、中間或右側：*/
-  /*主要樣式設定*/
-  width: 100%;
-  max-width: 100px;
-  margin: 0 auto;
-  padding-left: 0;
-  padding-right: 0;
-  /*響應式設計*/
-}
-@media (max-width: 1180px) {
-  header .wrap .rightBox .languageBox ul.languageList {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
-@media (max-width: 768px) {
-  header .wrap .rightBox .languageBox ul.languageList {
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
 header .wrap .rightBox .languageBox ul.languageList li {
   list-style: none;
@@ -150,7 +135,7 @@ header .wrap .rightBox .languageBox ul.languageList li {
 header .wrap .rightBox .languageBox ul.languageList li a {
   display: block;
   width: 100%;
-  padding: 10px 0;
+  padding: 10px;
   text-decoration: none;
   color: #f7f7f7;
   font-size: 18px;
@@ -579,7 +564,8 @@ main section.factory .wrap .bottomBox .factoryInfo {
   height: 450px;
   display: flex;
   justify-content: space-between;
-  align-items: start;
+  align-items: center;
+  flex-direction: column;
 }
 main section.factory .wrap .bottomBox .factoryInfo .factoryItem {
   display: flex;
@@ -589,7 +575,6 @@ main section.factory .wrap .bottomBox .factoryInfo .factoryItem {
   font-family: Arial, "Noto Sans TC", "Microsoft JhengHei", sans-serif;
 }
 main section.factory .wrap .bottomBox .factoryInfo .factoryItem .iconBox {
-  margin-top: 20px;
   position: relative;
   --w: 184px;
   width: var(--w);
@@ -632,8 +617,8 @@ main section.factory .wrap .bottomBox .factoryInfo .factoryItem .iconBox::after 
   width: 110%;
   height: 110%;
   border: 5px dotted #ee7600;
-  opacity: 0;
   border-radius: 50%;
+  opacity: 0;
 }
 main section.factory .wrap .bottomBox .factoryInfo .factoryItem .itemText {
   text-align: center;
@@ -658,7 +643,34 @@ main section.factory .wrap .bottomBox .factoryInfo .factoryItem .itemText p {
     background-color: #ee7600;
   }
   main section.factory .wrap .bottomBox .factoryInfo .factoryItem:hover .iconBox::after {
+    content: "";
+    position: absolute;
     opacity: 1;
+  }
+}
+main section.factory .wrap .bottomBox .factoryInfo .slick-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+main section.factory .wrap .bottomBox .factoryInfo .slick-dots li {
+  list-style: none;
+}
+main section.factory .wrap .bottomBox .factoryInfo .slick-dots li button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #f7f7f7;
+  border: 2px solid #ee7600;
+  cursor: pointer;
+  font-size: 0;
+}
+main section.factory .wrap .bottomBox .factoryInfo .slick-dots li.slick-active button {
+  background-color: #ee7600;
+}
+@media (max-width: 1200px) {
+  main section.factory .wrap .bottomBox .factoryInfo {
+    height: 350px;
   }
 }
 @media (max-width: 1380px) {
@@ -683,6 +695,10 @@ main section.factory .wrap .bottomBox .slick-list .slick-track {
   height: inherit;
   position: relative;
 }
+main section.factory .wrap .bottomBox .slick-list .slick-track .slick-slide {
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
 main section.factory .wrap .bottomBox .slick-list .slick-track .slick-slide:nth-child(odd) {
   height: inherit;
   display: flex;
@@ -690,37 +706,7 @@ main section.factory .wrap .bottomBox .slick-list .slick-track .slick-slide:nth-
 }
 @media (max-width: 1200px) {
   main section.factory .wrap .bottomBox .slick-list .slick-track .slick-slide:nth-child(odd) {
-    justify-content: center;
-  }
-}
-@media (max-width: 1200px) {
-  main section.factory .wrap .bottomBox .factoryInfo {
-    flex-direction: column;
-    align-items: center;
-    height: 300px;
-  }
-  main section.factory .wrap .bottomBox .factoryInfo .slick-list {
-    width: 100%;
-  }
-  main section.factory .wrap .bottomBox .factoryInfo .slick-dots {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-  }
-  main section.factory .wrap .bottomBox .factoryInfo .slick-dots li {
-    list-style: none;
-  }
-  main section.factory .wrap .bottomBox .factoryInfo .slick-dots li button {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: #f7f7f7;
-    border: 2px solid #ee7600;
-    cursor: pointer;
-    font-size: 0;
-  }
-  main section.factory .wrap .bottomBox .factoryInfo .slick-dots li.slick-active button {
-    background-color: #ee7600;
+    justify-content: flex-start;
   }
 }
 main section.product {
@@ -2270,6 +2256,11 @@ aside .bottomBox .languageBox ul.languageList li a {
   color: #f7f7f7;
   font-size: 18px;
   font-family: "Oswald", sans-serif;
+}
+@media (max-width: 375px) {
+  aside {
+    width: 100%;
+  }
 }
 
 .assideBlack {

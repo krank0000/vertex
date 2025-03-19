@@ -117,3 +117,35 @@ tl_encyclopedia
     opacity: 0,
     stagger: 0.2, //錯開
   });
+
+//footer
+let tl_footer = gsap.timeline({
+  duration: 0.5,
+  scrollTrigger: {
+    trigger: "footer .wrap",
+    start: "top bottom",
+    // markers: true,
+    scrub: false,
+  },
+});
+tl_footer
+  .from("footer .footerLogo", {
+    y: 50,
+    opacity: 0,
+  })
+  .from("footer .footerNav", {
+    y: 50,
+    opacity: 0,
+  })
+  .from("footer .footerInfo", {
+    y: 50,
+    opacity: 0,
+  })
+  .from("footer .footerSocial", {
+    y: 50,
+    opacity: 0,
+  })
+  .from("footer .footerCopyright", {
+    y: 50,
+    opacity: 0,
+  });
