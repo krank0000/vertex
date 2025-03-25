@@ -141,6 +141,10 @@ $(".ballSlider").slick({
     },
   ],
 });
+
+// 移動順序：將前 2 個移至最後
+$(".ballSliderRight .ball").slice(0, 2).appendTo(".ballSliderRight");
+
 //slickBall Right
 $(".ballSliderRight").slick({
   slidesToShow: 1,
